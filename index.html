@@ -64,6 +64,152 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/18/java%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2021-01-18T10:28:47.000Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/18/java%E5%AD%A6%E4%B9%A0/">java学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font size =4 >
+
+<h4 id="一-Java-方法中-仅存在【值传递】"><a href="#一-Java-方法中-仅存在【值传递】" class="headerlink" title="一.Java 方法中 仅存在【值传递】"></a>一.Java 方法中 仅存在【值传递】</h4><p>方法得到 所有【参数值的拷贝】，<br>    因此，方法不能修改一个基本数据，<br>【对象引用作为参数】，则该参数和对象引用 指向同一个对象，  </p>
+<hr>
+<h4 id="！！二-和-equals-区别"><a href="#！！二-和-equals-区别" class="headerlink" title="！！二. == 和 equals 区别"></a>！！二. == 和 equals 区别</h4><h5 id="1"><a href="#1" class="headerlink" title="1. =="></a>1. ==</h5><p> == 判断两个对象的【<strong>地址</strong>】是否相同， 即是否【<strong>同一个对象</strong>】</p>
+<h5 id="2-equals"><a href="#2-equals" class="headerlink" title="2. equals"></a>2. equals</h5><p>equals 分两种情况<br>(1) equals 【<strong>没有被类重写</strong>】，则equals方法等价==<br>(2) equals 【<strong>被类重写</strong>】， 则根据重写方法 判断两个对象内容是否相等  </p>
+<hr>
+<h4 id="！！三-为什么重写euqals-方法-必须重写-hashCode"><a href="#！！三-为什么重写euqals-方法-必须重写-hashCode" class="headerlink" title="！！三. 为什么重写euqals 方法 必须重写 hashCode()"></a>！！三. 为什么重写euqals 方法 必须重写 hashCode()</h4><ol>
+<li><p>两个对象 hashCode() 所得hash值相等 ， 但equals()方法不一定返回true  </p>
+</li>
+<li><p>两个对象 equals() 返回true，那么对象调用hashCode()返回的hash值一定相等  </p>
+</li>
+<li><p> 如果 仅重写 equals(),而不重写hashcode(),则存在 equals方法会返回true，而hashcode()方法返回的hash值不相等  </p>
+</li>
+<li><p>HashMap中 两个key 重复  </p>
+</li>
+</ol>
+<h4 id="3-1-为什么hash值相同，而两个对象不一定equals"><a href="#3-1-为什么hash值相同，而两个对象不一定equals" class="headerlink" title="3.1 为什么hash值相同，而两个对象不一定equals"></a>3.1 为什么hash值相同，而两个对象不一定equals</h4><ul>
+<li>hashCode() 算法存在碰撞情况</li>
+</ul>
+<hr>
+<h4 id="！！四-String-和-StringBuffer、StringBuilder-区别"><a href="#！！四-String-和-StringBuffer、StringBuilder-区别" class="headerlink" title="！！四. String 和 StringBuffer、StringBuilder 区别"></a>！！四. String 和 StringBuffer、StringBuilder 区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(1) String 【**字符串常量**】 ：  </span><br><span class="line">    内部的 char[] 是通过final修饰符修饰</span><br><span class="line">    因此String是不可变对象</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">(2) StringBuffer ： 线程安全  </span><br><span class="line">(3) StringBuilder ：</span><br><span class="line">    StringBuffer 和 StringBuilder 都 继承 AbstractStringBuilder</span><br><span class="line">    </span><br><span class="line">    该父类定义了append insert等公共方法  </span><br><span class="line">    StringBuffer 对实现的方法加上同步锁，线程安全</span><br><span class="line">    StringBuilder 对实现的方法没有上锁，所以线程非安全</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">String  ：  适用操作少量数据</span><br><span class="line">StringBuilder ： 适用于 【单线程】操作大量数据</span><br><span class="line">StringBuffer ：适用于 【多线程】操作大量数据</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="！！五-反射"><a href="#！！五-反射" class="headerlink" title="！！五. 反射"></a>！！五. 反射</h4><p>反射 ： 是把java类中各个成分 映射成一个个java对象</p>
+<h5 id="1-获取class对象三种方式"><a href="#1-获取class对象三种方式" class="headerlink" title="(1) 获取class对象三种方式"></a>(1) 获取class对象三种方式</h5><ol>
+<li>object.getClass()    // 通过【对象实例】获取class</li>
+<li>Object.class;        // 通过【类的静态class属性】 获取class </li>
+<li>Class.forName(String className) // 通过 【class名】获取 class</li>
+</ol>
+<h5 id="2-运行期间，一个类只能有一个Class对象产生"><a href="#2-运行期间，一个类只能有一个Class对象产生" class="headerlink" title="(2) 运行期间，一个类只能有一个Class对象产生"></a>(2) 运行期间，一个类只能有一个Class对象产生</h5><h5 id="3-反射的应用场景"><a href="#3-反射的应用场景" class="headerlink" title="!!(3) 反射的应用场景"></a>!!(3) 反射的应用场景</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.  JDBC 连接数据库时，反射加载 【驱动程序】</span><br><span class="line"></span><br><span class="line">Class.forNmae(&quot;com.mysql.jdbc.Driver&quot;); &#x2F;&#x2F; 加载驱动程序</span><br><span class="line"></span><br><span class="line">2. Spring中 IOC容器根据配置文件信息--&gt; 获取类文件信息--&gt;反射创建bean实例 ，并反射调用Set方法设置属性</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="4-反射-优缺点"><a href="#4-反射-优缺点" class="headerlink" title="!!(4) 反射 优缺点"></a>!!(4) 反射 优缺点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.  优点： 在【运行时】，动态加载类，使代码更灵活</span><br><span class="line">2. 缺点 ： 反射是一系列解释性操作，通过JVM实现。效率低于Java代码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="5-反射定义"><a href="#5-反射定义" class="headerlink" title="(5) 反射定义"></a>(5) 反射定义</h5><h2 id="反射本质就是根据-类的字节码信息，将类的内部属性方法一一映射成Java对象"><a href="#反射本质就是根据-类的字节码信息，将类的内部属性方法一一映射成Java对象" class="headerlink" title="反射本质就是根据 类的字节码信息，将类的内部属性方法一一映射成Java对象"></a>反射本质就是根据 类的字节码信息，将类的内部属性方法一一映射成Java对象</h2><h4 id="六-接口和抽象类-的区别-1036"><a href="#六-接口和抽象类-的区别-1036" class="headerlink" title="!! 六. 接口和抽象类 的区别 1036"></a>!! 六. 接口和抽象类 的区别 1036</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 接口是对行为(方法)的抽象，是一种对行为的规范。抽象类是对类的抽象，提供设计模板。</span><br><span class="line">2. 一个类可实现多个接口，</span><br><span class="line">    一个类只能继承一个抽象类</span><br><span class="line">3. 类实现接口，则接口内抽象方法必须全部实现。 </span><br><span class="line">    类继承抽象类，则抽象类内抽象方法不一定全部实现</span><br><span class="line">4. 接口内实例变量默认final类型，方法默认public。而抽象类内没有限制。</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="七-重写和重载的区别"><a href="#七-重写和重载的区别" class="headerlink" title="七. 重写和重载的区别"></a>七. 重写和重载的区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    1. 重写 ： 【方法的外貌没有改变，方法提供的行为改变】</span><br><span class="line">            【返回值】【抛出异常类型】 都是其父类方法的子类 </span><br><span class="line">            【访问修饰符】 子类访问权限&gt;&#x3D;父类访问权限 </span><br><span class="line">    2. 重载 ： </span><br><span class="line">       【参数】 【返回值】 【访问修饰符范围】 都发生改变 </span><br><span class="line">&#96;&#96;&#96;     </span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 八. 异常体系  1036-11</span><br></pre></td></tr></table></figure>
+<pre><code>1. 所有异常继承公共祖先【throwable类】
+2. 异常分为两大类 ： Exception &amp; Error
+    (1) Error 是【程序无法处理】的错误，大部分是代码在JVM运行时出现问题。
+        如 程序申请内存时，内存资源不足。抛出OOM
+        Error发生时，JVM一般会【终止】线程
+    (2) Exception是【程序可以处理】的错误
+        常见Exception： 
+            ArithmeticException 算数异常
+            NullPointException 空指针异常
+            ArrayIndexOutOfBoundsException 下标越界</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">#### 九. 深拷贝 &amp; 浅拷贝</span><br></pre></td></tr></table></figure>
+<p>浅拷贝 ： 对基本数据类型【值传递】，对引用数据类型进行 引用地址拷贝<br>深拷贝 ： 对基本数据类型【值传递】，对引用数据类型，则创建新对象，并复制其内容到新对象中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">####  十. 泛型 1404</span><br></pre></td></tr></table></figure>
+<pre><code>1.  【泛型的作用】
+    泛型是 【编译期】的【类型确认】机制。在【编译期】确认【容器】内元素为正确类型。防止ClassCastException
+
+2. 【泛型擦除】
+    编译器在【编译期】，确认类型正确后，擦除【容器的类型信息】。所以在【运行时】，容器不存在【类型信息】。   
+    如List&lt;String&gt; 在JVM中运行时 仅为List，不存在&lt;String&gt;信息
+
+3. 【】
+    List&lt;Object&gt; list 不能引用 List&lt;String&gt;对象
+    Lis&lt;?&gt;List 可以引用List&lt;String&gt;对象</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![image](A1EF5B82F0EC445EBEA6702EECF32E02)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 十一. final</span><br></pre></td></tr></table></figure>
+<pre><code>final 修饰 变量 、 方法 、 类 
+    1. 修饰【变量】：
+        变量 = 基础数据类型 ， 则变量值不可变
+        变量 = 引用数据类型， 则引用对象不可变
+    2. 修饰【类】
+        类不能被继承
+    3. 修饰【方法】
+        方法不能被子类重写</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 十二. Java 三大特性: 封装 + 继承 + 多态 </span><br><span class="line"> </span><br><span class="line">##### 1. 封装 </span><br><span class="line">对象属性【私有化】 ， 提供外界【访问】属性的方法</span><br><span class="line"></span><br><span class="line">##### 2. 继承</span><br></pre></td></tr></table></figure>
+<ol>
+<li>子类 拥有父类的属性和方法 ， 但是父类privete属性和方法 子类无法调用</li>
+<li>子类可【扩展】，拥有自己的属性和方法</li>
+<li>子类 重写 父类的方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 3. 多态</span><br></pre></td></tr></table></figure>
+对象引用 指向的实例类型未知<br>因此 ，【对象引用的方法调用 】，在【运行时】确定调用的是哪个方法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 十三. Object 方法 </span><br><span class="line">##### equal hashcode</span><br></pre></td></tr></table></figure>
+<pre><code>@Override
+    public boolean equals(Object obj) &#123;
+        if (obj != null &amp;&amp; obj.getClass() == this.getClass()) &#123;
+            Person person= (Person) obj;// 强转类型
+
+            return name.equals(person.getName())&amp;&amp;person.age==age;
+
+        &#125;
+        return false;
+&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##### getClass</span><br><span class="line">    获得类文件对象</span><br><span class="line">##### clone</span><br><span class="line">    深浅拷贝</span><br><span class="line">##### finalize</span><br></pre></td></tr></table></figure>
+<pre><code>用于GC的垃圾回收
+1. 实例不可达，GC判断实例是否【重写】finalize方法，未重写则直接回收
+2. 否则，将实例加入F-Queue队列，由低优先级线程执行F-Queue中实例的finalize方法
+3. finalize方法执行完毕后，【再次】判断实例对象是否可达。可达则复活，否则回收</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 设计模式</span><br><span class="line"></span><br><span class="line">##### 创建模式： 工厂模式 、抽象工厂模式、单例模式</span><br><span class="line"></span><br><span class="line">##### 工厂模式</span><br><span class="line">意义： 为对象的创建提供接口，隔离具体的创建过程</span><br><span class="line">&#123;</span><br><span class="line">    1. 扩展性 ： 构造器修改</span><br><span class="line">    2. 降低代码量： 创建对象的过程有一定代码量，且在多处使用。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单工厂模式<br>    工厂类(唯一)、抽象产品类(唯一)、具体产品类<br>    每当添加具体产品，则需要在唯一工厂类中添加相应业务逻辑，这不符合 开放封闭原则</p>
+<pre><code>适用于： 创建具体产品较少场景</code></pre>
+<p>工厂方法模式<br>    抽象工厂类、具体工厂类、抽象产品、具体产品<br>    抽象工厂类提供创建接口，而其子类(具体工厂)确定要创建的对象<br>    每添加一个具体产品，对应添加一个具体工厂类</p>
+<p>抽象工厂模式<br>    抽象工厂(一组) 、具体工厂、抽象产品、具体产品</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 单例模式</span><br><span class="line">饿汉式 + 懒汉式</span><br><span class="line"></span><br><span class="line">##### 结构模式：[装饰器模式、代理模式](https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;c06a686dae39) </span><br></pre></td></tr></table></figure>
+<p>两者内部都持有 原对象属性</p>
+<p>代理：<br>    注重 如何调用源对象某一个功能，<br>        不需要兼顾源对象的其他功能</p>
+<p>装饰：<br>    注重 原对象【功能扩展】。<br>    装饰类实例需要【兼顾】原对象的其他方法。因为扩展后的对象仍是是对象本身。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 十四. 静态内部类 和内部类</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p> 静态内部类可以有静态成员(方法，属性)，而非静态内部类则不能有静态成员</p>
+</li>
+<li><p>静态内部类 访问 外部类的【静态】静态成员,<br>  而非静态内部类 访问 外部类的【所有成员】(方法，属性)</p>
+</li>
+<li><p>静态内部类【实例创建】 不依赖于外部类的实例，通过类名直接调用构造器<br>非静态内部类【实例创建】，依赖于外部类的实例，通过外部实例调用构造器</p>
+</li>
+</ol>
+<p>```</p>
+<h5 id="十五-线程池只是销毁了超出核心线程数目的空闲线程而已-没有标记表明线程是否核心"><a href="#十五-线程池只是销毁了超出核心线程数目的空闲线程而已-没有标记表明线程是否核心" class="headerlink" title="十五. 线程池只是销毁了超出核心线程数目的空闲线程而已,没有标记表明线程是否核心"></a>十五. 线程池只是销毁了超出核心线程数目的空闲线程而已,没有标记表明线程是否核心</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/lzhello/lzhello.github.io.git/2021/01/18/java%E5%AD%A6%E4%B9%A0/" data-id="ckk2ff1go0000lomu5c88gbvm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-SQL学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/18/SQL%E5%AD%A6%E4%B9%A0/" class="article-date">
@@ -474,6 +620,10 @@ MySQL并非跳过= offset行，而是取offset+N行，然后返回放弃前offse
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/01/18/java%E5%AD%A6%E4%B9%A0/">java学习</a>
+          </li>
         
           <li>
             <a href="/2021/01/18/SQL%E5%AD%A6%E4%B9%A0/">SQL学习</a>
