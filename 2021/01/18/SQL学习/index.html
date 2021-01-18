@@ -5,15 +5,22 @@
   
 
   
-  <title>Hexo</title>
+  <title>SQL学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/lzhello/lzhello.github.io.git/index.html">
+  <meta name="description" content="！！一. mysql存储引擎 &#x3D; { MyISAM 和 InnoDB的区别}  1509123456789101112131415161718192021222324252627282930313233343536373839401. 【是否支持行锁】    MyISAM 仅支持表锁， InnoDB支持表锁和行锁    2. 【是否支持事务】     MyISAM不支持事务，且不具备【崩溃恢复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL学习">
+<meta property="og:url" content="https://github.com/lzhello/lzhello.github.io.git/2021/01/18/SQL%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="！！一. mysql存储引擎 &#x3D; { MyISAM 和 InnoDB的区别}  1509123456789101112131415161718192021222324252627282930313233343536373839401. 【是否支持行锁】    MyISAM 仅支持表锁， InnoDB支持表锁和行锁    2. 【是否支持事务】     MyISAM不支持事务，且不具备【崩溃恢复">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://note.youdao.com/yws/res/43524/D9161B28D6904F0084613E7AE4A9FCEC">
+<meta property="og:image" content="https://note.youdao.com/yws/res/43527/E0C9A6F042AD4AE6BD92D94ADED4E6E4">
+<meta property="article:published_time" content="2021-01-18T10:26:41.000Z">
+<meta property="article:modified_time" content="2021-01-18T10:27:19.363Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.youdao.com/yws/res/43524/D9161B28D6904F0084613E7AE4A9FCEC">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -62,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-SQL学习" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SQL学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/18/SQL%E5%AD%A6%E4%B9%A0/" class="article-date">
   <time datetime="2021-01-18T10:26:41.000Z" itemprop="datePublished">2021-01-18</time>
@@ -77,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/18/SQL%E5%AD%A6%E4%B9%A0/">SQL学习</a>
+    <h1 class="article-title" itemprop="name">
+      SQL学习
     </h1>
   
 
@@ -232,220 +237,19 @@ MySQL并非跳过= offset行，而是取offset+N行，然后返回放弃前offse
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-tcp learning" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/20/tcp%20learning/" class="article-date">
-  <time datetime="2020-11-20T07:19:05.350Z" itemprop="datePublished">2020-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计网学习"><a href="#计网学习" class="headerlink" title="计网学习"></a>计网学习</h1><h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><p><strong>关键词</strong><br>面向连接的可靠的传输</p>
-<p>确认ACK（确认号是否有效，一般置为1）：占1位，仅当ACK=1时，确认号字段才有效。ACK=0时，确认号无效</p>
-<p>同步SYN（请求建立连接，并在其序列号的字段进行序列号的初始值设定。建立连接，设置为1）：连接建立时用于同步序号。当SYN=1，ACK=0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN=1，ACK=1。因此，SYN=1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有在TCP建产连接时才会被置1，握手完成后SYN标志位被置0。</p>
-<p>终止FIN（希望断开连接）：用来释放一个连接。FIN=1表示：此报文段的发送方的数据已经发送完毕，并要求释放运输连接</p>
-<p>三次握手</p>
-<p>C to S : 建立连接 SYN</p>
-<p>S to C : SYN+ACK</p>
-<p>C to S : ACK</p>
-<p>四次分手（目的是为了让资源不要随意释放）</p>
-<p>C to S : FIN</p>
-<p>S to C : FIN+ACK</p>
-<p>S to C : FIN</p>
-<p>C to S : ACK</p>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>【1】为什么连接3次握手，断开4次分手</p>
-<p>“为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误”</p>
-<p>防止了服务器端的一直等待而浪费资源</p>
-<p>当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，<strong>很可能并不会立即关闭SOCKET</strong>，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。</p>
-<p>在谢希仁著《计算机网络》书中同时举了一个例子，如下：</p>
-<p>“已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，<strong>而是在某个网络结点长时间的滞留了</strong>，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。<strong>这样，server的很多资源就白白浪费掉了</strong>。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。”</p>
-<p>【2】为什么不能连接时2次握手</p>
-<p>3次握手完成两个重要的功能，既要双方做好发送数据的准备工作(双方都知道彼此已准备好)，也要允许双方就初始序列号进行协商，这个序列号在握手过程中被发送和确认。<br>现在把三次握手改成仅需要两次握手，死锁是可能发生的。作为例子，考虑计算机S和C之间的通信，假定C给S发送一个连接请求分组，S收到了这个分组，并发送了确认应答分组。按照两次握手的协定，S认为连接已经成功地建立了，可以开始发送数据分组。可是，C在S的应答分组在传输中被丢失的情况下，将不知道S是否已准备好，不知道S建立什么样的序列号，C甚至怀疑S是否收到自己的连接请求分组。在这种情况下，C认为连接还未建立成功，将忽略S发来的任何数据分组，只等待连接确认应答分组。而S在发出的分组超时后，重复发送同样的分组。这样就形成了死锁。</p>
-<p>为了保证服务端S能收接受到客户端C的信息并能做出正确的应答而进行前两次(第一次和第二次)握手，为了保证客户端能够接收到服务端的信息并能做出正确的应答而进行后两次(第二次和第三次)握手。</p>
-<h2 id="Socket-套接字"><a href="#Socket-套接字" class="headerlink" title="Socket 套接字"></a>Socket 套接字</h2><p>ip+port 唯一表示</p>
-<p>ip找到主机</p>
-<p>port（端口号）找到程序<br>65535个</p>
+  
+    <a href="/2020/11/20/tcp%20learning/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/lzhello/lzhello.github.io.git/2020/11/20/tcp%20learning/" data-id="ckk2f7pe200026wmug9sw4c43" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-firstblog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/12/firstblog/" class="article-date">
-  <time datetime="2020-11-12T11:43:38.000Z" itemprop="datePublished">2020-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/12/firstblog/">firstblog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="我的博客文章"><a href="#我的博客文章" class="headerlink" title="我的博客文章"></a>我的博客文章</h1><h2 id="这是一个二级标题"><a href="#这是一个二级标题" class="headerlink" title="这是一个二级标题"></a>这是一个二级标题</h2><h3 id="这是一个三级标记（-后面一定要加空格）"><a href="#这是一个三级标记（-后面一定要加空格）" class="headerlink" title="这是一个三级标记（#后面一定要加空格）"></a>这是一个三级标记（#后面一定要加空格）</h3><p><em>这一句话会是斜体</em></p>
-<p><strong>这一句话会被加粗</strong></p>
-<p><strong><em>这一句话会被斜体加粗</em></strong></p>
-<p><del>这一句话会有删除线</del></p>
-<blockquote>
-<p>这里是引用的内容</p>
-<blockquote>
-<p>还能接着引用</p>
-<blockquote>
-<p>还能再往里引用</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>接下来是分割线</p>
-<hr>
-<hr>
-<h3 id="这里是超链接"><a href="#这里是超链接" class="headerlink" title="这里是超链接"></a>这里是超链接</h3><p><a target="_blank" rel="noopener" href="http://baidu.com/">百度</a></p>
-<h3 id="这里是无序列表"><a href="#这里是无序列表" class="headerlink" title="这里是无序列表"></a>这里是无序列表</h3><ul>
-<li>列表1</li>
-</ul>
-<ul>
-<li>列表2</li>
-</ul>
-<ul>
-<li>列表3<ul>
-<li>列表嵌套（前加三个空格）</li>
-</ul>
-</li>
-</ul>
-<h3 id="这里是有序列表"><a href="#这里是有序列表" class="headerlink" title="这里是有序列表"></a>这里是有序列表</h3><ol>
-<li>列表1</li>
-<li>列表2</li>
-<li>列表3</li>
-</ol>
-<h3 id="这里是表格"><a href="#这里是表格" class="headerlink" title="这里是表格"></a>这里是表格</h3><table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<h3 id="这里是代码"><a href="#这里是代码" class="headerlink" title="这里是代码"></a>这里是代码</h3><p><code>printf(&#39;hello,world);</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fun()&#123;</span><br><span class="line">     System.out.println(&quot;hello,world&quot;);</span><br><span class="line">&#125;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/lzhello/lzhello.github.io.git/2020/11/12/firstblog/" data-id="ckk2f7pdr00006wmu8xho29fd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/12/hello-world/" class="article-date">
-  <time datetime="2020-11-12T08:42:59.216Z" itemprop="datePublished">2020-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/12/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/lzhello/lzhello.github.io.git/2020/11/12/hello-world/" data-id="ckk2f7pdy00016wmub5ny3mym" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
