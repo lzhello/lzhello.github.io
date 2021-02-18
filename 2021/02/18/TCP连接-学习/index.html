@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="天才lzh自留地" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="计网学习TCP&#x2F;IP关键词面向连接的可靠的传输 确认ACK（确认号是否有效，一般置为1）：占1位，仅当ACK&#x3D;1时，确认号字段才有效。ACK&#x3D;0时，确认号无效 同步SYN（请求建立连接，并在其序列号的字段进行序列号的初始值设定。建立连接，设置为1）：连接建立时用于同步序号。当SYN&#x3D;1，ACK&#x3D;0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN&#x3D;1，ACK&#x3D;1。因此，SYN&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP连接 学习">
+<meta property="og:url" content="https://github.com/lzhello/lzhello.github.io.git/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="天才lzh自留地">
+<meta property="og:description" content="计网学习TCP&#x2F;IP关键词面向连接的可靠的传输 确认ACK（确认号是否有效，一般置为1）：占1位，仅当ACK&#x3D;1时，确认号字段才有效。ACK&#x3D;0时，确认号无效 同步SYN（请求建立连接，并在其序列号的字段进行序列号的初始值设定。建立连接，设置为1）：连接建立时用于同步序号。当SYN&#x3D;1，ACK&#x3D;0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN&#x3D;1，ACK&#x3D;1。因此，SYN&#x3D;">
+<meta property="og:locale">
+<meta property="og:image" content="https://note.youdao.com/yws/res/43474/4FC3472641744C66B229F5234DAE043C">
+<meta property="og:image" content="https://note.youdao.com/yws/res/43485/7FB35C1EE4CB4D12A8A36EB73BA666A6">
+<meta property="og:image" content="https://note.youdao.com/yws/res/43486/7DCFCE57D4E84BD9894900F9054CFE58">
+<meta property="og:image" content="https://note.youdao.com/yws/res/43525/21FC53398F45409BBE6268EC9FE6C619">
+<meta property="article:published_time" content="2021-02-18T12:55:01.000Z">
+<meta property="article:modified_time" content="2021-02-18T16:21:14.060Z">
+<meta property="article:author" content="lzhello">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.youdao.com/yws/res/43474/4FC3472641744C66B229F5234DAE043C">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/lzhello/lzhello.github.io.git/2021/02/18/TCP连接-学习/"/>
+
+
+
+
+
+  <title>TCP连接 学习 | 天才lzh自留地</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天才lzh自留地</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/lzhello/lzhello.github.io.git/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天才lzh自留地">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TCP连接 学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-18T20:55:01+08:00">
+                2021-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="计网学习"><a href="#计网学习" class="headerlink" title="计网学习"></a>计网学习</h1><h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><p><strong>关键词</strong><br>面向连接的可靠的传输</p>
+<p>确认ACK（确认号是否有效，一般置为1）：占1位，仅当ACK=1时，确认号字段才有效。ACK=0时，确认号无效</p>
+<p>同步SYN（请求建立连接，并在其序列号的字段进行序列号的初始值设定。建立连接，设置为1）：连接建立时用于同步序号。当SYN=1，ACK=0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN=1，ACK=1。因此，SYN=1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有在TCP建产连接时才会被置1，握手完成后SYN标志位被置0。</p>
+<p>终止FIN（希望断开连接）：用来释放一个连接。FIN=1表示：此报文段的发送方的数据已经发送完毕，并要求释放运输连接</p>
+<a id="more"></a>
+
+<p>三次握手</p>
+<p>C to S : 建立连接 SYN</p>
+<p>S to C : SYN+ACK</p>
+<p>C to S : ACK</p>
+<p>四次分手（目的是为了让资源不要随意释放）</p>
+<p>C to S : FIN</p>
+<p>S to C : FIN+ACK</p>
+<p>S to C : FIN</p>
+<p>C to S : ACK</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>【1】为什么连接3次握手，断开4次分手</p>
+<p>“为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误”</p>
+<p>防止了服务器端的一直等待而浪费资源</p>
+<p>当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，<strong>很可能并不会立即关闭SOCKET</strong>，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。</p>
+<p>在谢希仁著《计算机网络》书中同时举了一个例子，如下：</p>
+<p>“已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，<strong>而是在某个网络结点长时间的滞留了</strong>，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。<strong>这样，server的很多资源就白白浪费掉了</strong>。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。”</p>
+<p>【2】为什么不能连接时2次握手</p>
+<p>3次握手完成两个重要的功能，既要双方做好发送数据的准备工作(双方都知道彼此已准备好)，也要允许双方就初始序列号进行协商，这个序列号在握手过程中被发送和确认。<br>现在把三次握手改成仅需要两次握手，死锁是可能发生的。作为例子，考虑计算机S和C之间的通信，假定C给S发送一个连接请求分组，S收到了这个分组，并发送了确认应答分组。按照两次握手的协定，S认为连接已经成功地建立了，可以开始发送数据分组。可是，C在S的应答分组在传输中被丢失的情况下，将不知道S是否已准备好，不知道S建立什么样的序列号，C甚至怀疑S是否收到自己的连接请求分组。在这种情况下，C认为连接还未建立成功，将忽略S发来的任何数据分组，只等待连接确认应答分组。而S在发出的分组超时后，重复发送同样的分组。这样就形成了死锁。</p>
+<p>为了保证服务端S能收接受到客户端C的信息并能做出正确的应答而进行前两次(第一次和第二次)握手，为了保证客户端能够接收到服务端的信息并能做出正确的应答而进行后两次(第二次和第三次)握手。</p>
+<h2 id="Socket-套接字"><a href="#Socket-套接字" class="headerlink" title="Socket 套接字"></a>Socket 套接字</h2><p>ip+port 唯一表示</p>
+<p>ip找到主机</p>
+<p>port（端口号）找到程序<br>65535个</p>
+<font size =4>
+
+<h4 id="一-OSI七层模型-amp-TCP-IP四层模型"><a href="#一-OSI七层模型-amp-TCP-IP四层模型" class="headerlink" title="一. OSI七层模型 &amp; TCP/IP四层模型"></a>一. OSI七层模型 &amp; TCP/IP四层模型</h4><p><img src="https://note.youdao.com/yws/res/43474/4FC3472641744C66B229F5234DAE043C" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">五层模型 【作用】</span><br><span class="line">1. 应用层 ： 应用进程间【通信数据】的处理</span><br><span class="line">2. 传输层 ： 实现【两台主机】间【数据传输】</span><br><span class="line">3. 网络层 ： 两台主机通信，会经过多段【数据链路】。网络层作用 【选择】合适的路由和交换节点</span><br><span class="line">4. 数据链路层 ： 确保【一段链路】上的数据传输</span><br><span class="line">5. 物理层 ： 实现 【两个节点间】【比特流】的【透明传输】</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="二-应用层-amp-传输层-amp-网络层-常见协议-1710"><a href="#二-应用层-amp-传输层-amp-网络层-常见协议-1710" class="headerlink" title="二. 应用层 &amp; 传输层 &amp; 网络层 常见协议 1710"></a>二. 应用层 &amp; 传输层 &amp; 网络层 常见协议 1710</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">应用层：</span><br><span class="line">    DNS ： 实现 域名--&gt;IP地址 </span><br><span class="line">        (注意：多个主机可以映射成一个IP地址，一台主机 映射唯一MAC地址)</span><br><span class="line">    HTTP ： 实现 客户端 向服务端请求资源，服务端向客户端发送 资源数据(html css js)</span><br><span class="line">    FTP： 文件传输协议</span><br><span class="line">    STMP： 邮件传输协议</span><br><span class="line">    SSL： 加密套接字协议</span><br><span class="line">    </span><br><span class="line">传输层： </span><br><span class="line">    TCP： </span><br><span class="line">        1. 【区别】：面向连接、可靠的数据传输，一对一全双工</span><br><span class="line">        2. 【应用场景】：应用于【文件传输、重要状态更新】</span><br><span class="line">        3. 【基于TCP的协议】：HTTP、FTP、SMTP 协议基于TCP。 【文件传输、邮件发送，要求可靠性】</span><br><span class="line">    UDP： </span><br><span class="line">        1. 【区别】：不面向连接、不可靠的数据传输，一对多</span><br><span class="line">        2. 【应用场景】： 应用于【视频传输、实时通信】</span><br><span class="line">        3. 【基于UDP的协议】： DNS协议  (数据量小，调用频繁。建立连接开销过大)</span><br><span class="line">网络层：</span><br><span class="line">    ARP ： 实现 IP地址--&gt;Mac地址 </span><br><span class="line">    IP：【主机间通信】  经过多段数据链路，</span><br><span class="line">        IP协议 &#x3D; 【路由+交换节点】的选择</span><br><span class="line">        IP协议 &#x3D; 【无连接、不可靠】数据传输</span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="三-TCP-三次握手"><a href="#三-TCP-三次握手" class="headerlink" title="三.   TCP 三次握手"></a>三.   TCP 三次握手</h4><p>【==三次握手目的==】： 双方确认 自己和对方的 【<strong>发送与接受正常</strong>】</p>
+<h5 id="！！3-1-为什么三次握手"><a href="#！！3-1-为什么三次握手" class="headerlink" title="！！3.1. 为什么三次握手"></a>！！3.1. 为什么三次握手</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ACK 确认位</span><br><span class="line">SYN 同步位</span><br><span class="line">seq 序号： 自己本次数据的开始序号</span><br><span class="line">ack 确认号 : 对方下次数据的开始序号</span><br><span class="line"></span><br><span class="line">(1) 客户端--SYN，seq&#x3D;x --&gt;服务端</span><br><span class="line">    服务端确认 客户端发送和服务端接受 正常</span><br><span class="line">(2) 服务端--ACK SYN seq&#x3D;y ack &#x3D;x+1 --&gt; 客户端</span><br><span class="line">    客户端确认  客户端发送和接受 服务端发送和接受 正常</span><br><span class="line">    【SYN&#x3D;1的原因】 ： 服务端告诉客户端 我接收到的信息确实是你发送的</span><br><span class="line">(3) 客户端--ACK seq&#x3D;x+1 ack&#x3D;y+1--&gt;服务端</span><br><span class="line">    服务端确认 客户端接受 和 服务端发送 正常</span><br><span class="line">    第三次握手 ，客户端可向 服务端传输信息</span><br><span class="line">    【ACK&#x3D;1的原因】 客户端告诉服务端 ， 我接受到的信息确实是你发送的</span><br><span class="line">三次握手 确认双方 接受和发送功能正常，缺一不可</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="3-2-缺少第三次握手"><a href="#3-2-缺少第三次握手" class="headerlink" title="3.2 缺少第三次握手"></a>3.2 缺少第三次握手</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一次握手时，客户端 发送SYN信息滞留，超时重传。滞留信息 和   超时重传信息最终都成功发送，则存在两次连接建立，浪费资源。</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="四-TCP-四次挥手-1853"><a href="#四-TCP-四次挥手-1853" class="headerlink" title="四. TCP 四次挥手 1853"></a>四. TCP 四次挥手 1853</h4><p><img src="https://note.youdao.com/yws/res/43485/7FB35C1EE4CB4D12A8A36EB73BA666A6" alt="image"></p>
+<h5 id="！！4-1-四次挥手过程"><a href="#！！4-1-四次挥手过程" class="headerlink" title="！！4.1 四次挥手过程"></a>！！4.1 四次挥手过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">第一次挥手 ： 客户端--&gt;服务端发送断开请求。请求 &#x3D; &#123;FIN&#x3D;1,seq&#x3D;x&#125;</span><br><span class="line">第二次挥手 ： 服务端--&gt;客户端发送响应。响应 &#x3D; &#123;ACK&#x3D;1,seq&#x3D;y,ack&#x3D;x+1&#125;</span><br><span class="line"></span><br><span class="line">期间存在 服务端--&gt;客户端 发送数据</span><br><span class="line"></span><br><span class="line">第三次挥手 ： 服务端---&gt;客户端发送断开请求。 请求 &#x3D; &#123;FIN&#x3D;1，seq&#x3D;z&#125;</span><br><span class="line">第四次挥手 ： 客户端---&gt;服务端发送响应 。 响应 &#x3D; &#123;ACK&#x3D;1,ack&#x3D;z+1,&#125;</span><br><span class="line"></span><br><span class="line">至此 连接关闭</span><br></pre></td></tr></table></figure>
+
+<h5 id="！！4-2-第四次挥手后-【客户端-time-wait】，等待2MSL-1933"><a href="#！！4-2-第四次挥手后-【客户端-time-wait】，等待2MSL-1933" class="headerlink" title="！！4.2 第四次挥手后 【客户端= time wait】，等待2MSL 1933"></a>！！4.2 第四次挥手后 【客户端= time wait】，等待2MSL 1933</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第四次挥手的【报文段】丢失，则服务端【超时重传】第三次挥手【报文段】。</span><br><span class="line">若 客户端未等待2MSL直接关闭，则无法接受重传【报文段】，关闭失败。</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-3-CLOSE-WAIT-TIME-WAIT"><a href="#4-3-CLOSE-WAIT-TIME-WAIT" class="headerlink" title="4.3 CLOSE-WAIT TIME-WAIT"></a>4.3 CLOSE-WAIT TIME-WAIT</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. CLOSED-WAIT ：   服务端 【被动接受】断开连接请求</span><br><span class="line">2. TIME-WAIT : 发送完最后一次ACK报文段后，进入TIME-WAIT，等待2MSL.防止最后ACK报文段丢失。</span><br></pre></td></tr></table></figure>
+<h5 id="4-4-TIME-WAIT状态过多"><a href="#4-4-TIME-WAIT状态过多" class="headerlink" title="4.4 TIME-WAIT状态过多"></a>4.4 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dadonggg/p/8778318.html">TIME-WAIT状态过多</a></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TIME-WAIT状态占用端口。</span><br><span class="line">短链接 &#x3D; &#123;处理业务+传输数据&#125; &lt; TIME-wait的时间 的连接</span><br><span class="line"></span><br><span class="line">【高并发短连接】服务器【主动】申请关闭连接，造成TIME-WAIT过多。</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="五-TCP可靠性"><a href="#五-TCP可靠性" class="headerlink" title="五.TCP可靠性"></a>五.TCP可靠性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1. 校验和： 确保端到端数据可靠传输，TCP首部含有校验和字段，</span><br><span class="line">2. 【ARQ】自动重传请求 :  存在 【等待停止】 和 【GO_BACK_N】 两种ARQ </span><br><span class="line">3. 【流量控制】：  </span><br><span class="line">        (1) 【目的】：  防止【接收端】的接受能力不足</span><br><span class="line">        (2) 接收端返回【确认报文】中含【接收窗口】大小</span><br><span class="line">4. 【拥塞控制】:</span><br><span class="line">        (1) 【目的】：  防止【全局网络 】如【路由器||链路】过载</span><br><span class="line">        (2) 【网络】拥塞情况决定的【拥塞窗口】大小。</span><br><span class="line">        (3) TCP拥塞控制采用四种算法, </span><br><span class="line">        </span><br><span class="line">            1) 慢开始： 拥塞窗口大小cwbd &lt; 慢开始阈值， 每经过一轮传播，cwnd加倍</span><br><span class="line">            </span><br><span class="line">            2)拥塞避免、 ： 拥塞窗口大小cwbd &gt; 慢开始阈值, 每经过一轮传播 拥塞窗口+1</span><br><span class="line">            </span><br><span class="line">            3)快重传 : </span><br><span class="line">                当【接收端】接收到【顺序错误】的报文段后，向【发送端】发送【重复】ACK报文。</span><br><span class="line">                此时 发送端是根据【接收重复ACK报文】判断传输失败，而不是根据【超时】判断发送失败。避免【超时等待】时，发送端空等。</span><br><span class="line">            4)快恢复</span><br><span class="line">                【慢开始阈值】 &#x3D; 【初始拥塞窗口】 &#x3D; 【旧拥塞窗口的一半】</span><br><span class="line">【发送窗口】 &#x3D; Math.min(接收窗口、拥塞窗口);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="六-输入URL显示主页-1149-1249"><a href="#六-输入URL显示主页-1149-1249" class="headerlink" title="六. 输入URL显示主页 1149 - 1249"></a>六. 输入URL显示主页 1149 - 1249</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1. DNS 解析域名</span><br><span class="line">2. 建立TCP连接 ： 三次握手</span><br><span class="line">3. 创建http请求报文，并通过【SSL加密】。最后发送http请求</span><br><span class="line">    请求报文 &#x3D; &#123;</span><br><span class="line">        1.  请求行 &#x3D; &#123;请求方法 + URL + http版本&#125; </span><br><span class="line">        2. 请求首部 &#x3D; &#123;</span><br><span class="line">                        Connnection &#x3D; keep-alive ，</span><br><span class="line">                        Accept &#x3D; 客户端接收的数据类型，</span><br><span class="line">                        content -length &#x3D; 内容长度</span><br><span class="line">                    &#125;</span><br><span class="line">        3. 请求实体 &#x3D; &#123; 如 【请求方法&#x3D;post||put】，则请求实体存储传输的数据&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    请求经过【负载均衡+重定向】</span><br><span class="line">    </span><br><span class="line">4. 服务端接收解析http请求，并返回http响应。</span><br><span class="line">    响应报文 &#x3D; &#123;</span><br><span class="line">            1. 响应行 &#x3D; &#123; 协议版本 + 状态码 &#125;</span><br><span class="line">            2. 响应首部 &#x3D; &#123;</span><br><span class="line">                    content-legnth</span><br><span class="line">                    content-type &#x3D; html</span><br><span class="line">                &#125;    </span><br><span class="line">            3. 响应实体 &#x3D; &#123; 请求所需的资源 如 html css js&#125;</span><br><span class="line">    &#125;</span><br><span class="line">5. 浏览器解析http响应，并渲染页面</span><br><span class="line"></span><br><span class="line">6. 断开TCP连接 ： 四次挥手</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="七-HTTPS-1500"><a href="#七-HTTPS-1500" class="headerlink" title="七. HTTPS  1500"></a>七. HTTPS  1500</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">(1)    【对称加密】： 密钥只有一个，加密解密使用同个密码。【速度快】</span><br><span class="line">            【优点】： 速度快</span><br><span class="line">            【缺点】 ： 无法确保【消息来源】，存在自己发自己的情况</span><br><span class="line">            </span><br><span class="line">(2)    【非对称加密】： 密钥分 公钥、私钥(本人保管)。</span><br><span class="line">            (公钥加密内容 使用私钥解密，私钥加密内容，使用公钥解密)。</span><br><span class="line">            【举例】： A 发送邮件给B ， 若邮件使用A的私钥加密，则确保(确保邮件来源)。 若邮件使用B的公钥加密，则确保邮件去处。</span><br><span class="line">            【优点】： 确保【消息来源】 || 【消息去处】 【二者按需取一】</span><br><span class="line">            【缺点】： 速度慢</span><br><span class="line">(3)     【数字签名】：</span><br><span class="line">            数字签名 &#x3D; 对消息的hash值使用私钥加密。</span><br><span class="line">            数字签名添加在消息尾部</span><br><span class="line">            【优点】：确保 【消息来源】 和 【消息未被修改】。</span><br><span class="line">            【缺点】：C修改B电脑中的A公钥，C冒充A发送数据给B，B无法察觉。</span><br><span class="line">(4)     【数字证书】：</span><br><span class="line">            数字证书 &#x3D; 将A的公钥交由第三方CA(Certificate Authority)的私钥加密</span><br><span class="line">            数字证书 添加在 消息尾部。避免B电脑中A公钥被替换。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(1) HTTP 默认端口 &#x3D; 80 </span><br><span class="line">    HTTP协议 运行在TCP之上，http报文是明文。</span><br><span class="line">    【http安全缺陷】 &#x3D; &#123;</span><br><span class="line">            (1) 无法验证服务器身份</span><br><span class="line">            (2) 无法确保数据完整性</span><br><span class="line">            (3) 无法确保数据未被窃听</span><br><span class="line">        &#125;</span><br><span class="line">(2) HTTPS 默认端口 &#x3D; 443</span><br><span class="line">    HTTPS &#x3D; HTTP报文 + SSL协议(加密http报文)</span><br><span class="line">    【http报文】 采用【对称加密】，【对称加密的密钥】采用【服务端数字证书】进行【非对称加密】</span><br><span class="line">    接收方</span><br><span class="line">     </span><br><span class="line">     非对称加密 采用 幂模运算，在解密过程中私钥很大，导致幂运算很慢</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h5 id="https-加密过程"><a href="#https-加密过程" class="headerlink" title="https 加密过程"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wqhwe/p/5407468.html">https 加密过程</a></h5><p><img src="https://note.youdao.com/yws/res/43486/7DCFCE57D4E84BD9894900F9054CFE58" alt="image"></p>
+<h4 id="八-HTTP-长短连接-1718"><a href="#八-HTTP-长短连接-1718" class="headerlink" title="八. HTTP 长短连接 1718"></a>八. HTTP 长短连接 1718</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Http短链接 ： 每次客户端发送请求都会重新建立连接。</span><br><span class="line">Http长连接 ： 服务器响应报文中，其响应首部 connection&#x3D;keep-alive，表明该链接是长连接，一段时间内不断开。客户端再次发送请求时通过该链接。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="！！九-Cookie-和-Session的区别"><a href="#！！九-Cookie-和-Session的区别" class="headerlink" title="！！九. Cookie 和 Session的区别"></a>！！九. Cookie 和 Session的区别</h4><p>HTTP协议是无状态协议。不保存【用户状态】。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(1) Session作用：实现【服务端】存储【用户状态】</span><br><span class="line">         每个用户绑定一个SessionID，请求中url或者cookie拿到sessionid</span><br><span class="line">         Session存储在服务器||数据库中，超过一段时间会销毁。</span><br><span class="line">         常用于 购物车场景。明确购物操作是哪一个用户进行的。</span><br><span class="line">     </span><br><span class="line"> Cookie作用 ：实现【客户端】存储【用户状态】</span><br><span class="line">         有4KB的大小限制</span><br><span class="line">         当请求发送给同个domain中服务器，则都会携带cookie</span><br><span class="line">         可以禁用cookie</span><br><span class="line">         常用于下次访问网站时自动登录</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="十-URI-和URL"><a href="#十-URI-和URL" class="headerlink" title="十. URI 和URL"></a>十. URI 和URL</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URI : 统一资源标识符，唯一标识一个资源</span><br><span class="line">URL : 统一资源定位器，定位资源所在位置</span><br></pre></td></tr></table></figure>
+
+<h4 id="！十一-HTTP1-0-和-HTTP1-1"><a href="#！十一-HTTP1-0-和-HTTP1-1" class="headerlink" title="！十一. HTTP1.0 和 HTTP1.1"></a>！十一. HTTP1.0 和 HTTP1.1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1. HTTP1.0 默认使用短链接 ， HTTP1.1默认使用长连接</span><br><span class="line"></span><br><span class="line">2. http1.0 存在【带宽浪费】：</span><br><span class="line">    例如    </span><br><span class="line">    客户端仅需要某资源对象的一部分，</span><br><span class="line">    但在http1.0中只能请求整个资源。</span><br><span class="line">    http1.1中【允许请求资源的某个部分】，响应码206。</span><br><span class="line">3. 【错误状态响应码不同】：</span><br><span class="line">    http1.1中增加【错误状态】响应码，</span><br><span class="line">    如 409(confilct)请求资源和资源当前状态冲突 410(GONE) 请求资源永久删除 </span><br><span class="line"></span><br><span class="line">4. 【缓存处理】</span><br><span class="line">    http1.1 在报文首部中 引入If-unModitfied-Since If-match等缓存头</span><br><span class="line"></span><br><span class="line">5. 【host头】：</span><br><span class="line">http1.0认为一台主机匹配一个IP地址，因此 request中的URL不带有hostname</span><br><span class="line">虚拟机技术发展， 一台物理主机可以创建多台虚拟主机，</span><br><span class="line">http1.1通过hostname指定虚拟机，http1.1不指定hostname，则会报错400 请求错误</span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="HTTP1-1-和-http-2-0-区别"><a href="#HTTP1-1-和-http-2-0-区别" class="headerlink" title="HTTP1.1 和 http 2.0 区别"></a>HTTP1.1 和 http 2.0 区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 1. HTTP&#x2F;2采用二进制格式(传统二进制格式 健壮性考虑因素很多)</span><br><span class="line"> </span><br><span class="line"> 2. 多路复用 (共享连接) ： </span><br><span class="line"> HTTP1.X采用keep alive来解决复用TCP的问题，但是仍存在请求阻塞问题</span><br><span class="line"> HTTP1.x需要每条请求顺序发送,服务端才能判断接收到的数据属于哪条请求</span><br><span class="line"> HTTP&#x2F;2 每个请求以stream的方式传输，每个stream有唯一标识  </span><br><span class="line"> </span><br><span class="line"> 3. header ： </span><br><span class="line"> 通讯双方各自cache一份header fields表，既避免了重复header的传输，又减小了需要传输的大小</span><br><span class="line"> </span><br><span class="line">HAPCK</span><br><span class="line"> </span><br><span class="line"> 4. 服务器推送：</span><br><span class="line"> 浏览器只请求了index.html，但是服务器把index.html、style.css、example.png全部发送给浏览器</span><br><span class="line"> </span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="十二-get和post的区别"><a href="#十二-get和post的区别" class="headerlink" title="十二. get和post的区别"></a>十二. get和post的区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 【参数传递】</span><br><span class="line">GET参数通过URL传递</span><br><span class="line">POST数据通过 http请求的请求实体传递</span><br><span class="line">2. 【刷新】</span><br><span class="line">    GET方法用于获取资源，不改变资源的状态，所以是幂等的</span><br><span class="line">    POST方法用于创建资源，不幂等</span><br><span class="line">    两次相同的POST请求会在服务器端创建两份资源，它们具有不同的URI</span><br><span class="line">3. 【缓存问题】</span><br><span class="line">    GET在浏览器中缓存，post不缓存</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h4 id="十三-状态码"><a href="#十三-状态码" class="headerlink" title="十三. 状态码"></a>十三. 状态码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1XX请求成功，正在处理</span><br><span class="line">2XX请求成功，已经处理</span><br><span class="line">    200 - 请求成功</span><br><span class="line">    206 - 请求部分成功</span><br><span class="line">3XX 重定向</span><br><span class="line">301永久重定向</span><br><span class="line">302临时重定向</span><br><span class="line"></span><br><span class="line">4XX</span><br><span class="line">400 请求语法错误</span><br><span class="line">403 服务被拒绝</span><br><span class="line">404页面不存在</span><br><span class="line"></span><br><span class="line">5XX</span><br><span class="line">500服务器内部错误（报错了）</span><br><span class="line">502 服务不可用</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="十四-正向代理和-反向代理"><a href="#十四-正向代理和-反向代理" class="headerlink" title="十四. 正向代理和 反向代理"></a>十四. 正向代理和 反向代理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">正向代理隐藏真实客户端，</span><br><span class="line">    1. 做【缓存】，加速访问资源</span><br><span class="line">    2. 对客户端【授权】</span><br><span class="line">    3. 客户端访问记录</span><br><span class="line">    </span><br><span class="line">反向代理隐藏真实服务端， </span><br><span class="line">    1. 实现负载均衡</span><br><span class="line">    2. 避免网络攻击</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://note.youdao.com/yws/res/43525/21FC53398F45409BBE6268EC9FE6C619" alt="image"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/18/%E5%B9%B6%E5%8F%91learning-1/" rel="next" title="并发learning">
+                <i class="fa fa-chevron-left"></i> 并发learning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lzhello" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="lzhelloo@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">计网学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP"><span class="nav-number">1.1.</span> <span class="nav-text">TCP&#x2F;IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.1.</span> <span class="nav-text">题目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Socket-%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="nav-number">1.2.</span> <span class="nav-text">Socket 套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80-OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B-amp-TCP-IP%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">一. OSI七层模型 &amp; TCP&#x2F;IP四层模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C-%E5%BA%94%E7%94%A8%E5%B1%82-amp-%E4%BC%A0%E8%BE%93%E5%B1%82-amp-%E7%BD%91%E7%BB%9C%E5%B1%82-%E5%B8%B8%E8%A7%81%E5%8D%8F%E8%AE%AE-1710"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">二. 应用层 &amp; 传输层 &amp; 网络层 常见协议 1710</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">三.   TCP 三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%81%EF%BC%813-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">1.2.0.3.1.</span> <span class="nav-text">！！3.1. 为什么三次握手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-%E7%BC%BA%E5%B0%91%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">1.2.0.3.2.</span> <span class="nav-text">3.2 缺少第三次握手</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B-TCP-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B-1853"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">四. TCP 四次挥手 1853</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%81%EF%BC%814-1-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.0.4.1.</span> <span class="nav-text">！！4.1 四次挥手过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%81%EF%BC%814-2-%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%90%8E-%E3%80%90%E5%AE%A2%E6%88%B7%E7%AB%AF-time-wait%E3%80%91%EF%BC%8C%E7%AD%89%E5%BE%852MSL-1933"><span class="nav-number">1.2.0.4.2.</span> <span class="nav-text">！！4.2 第四次挥手后 【客户端&#x3D; time wait】，等待2MSL 1933</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-CLOSE-WAIT-TIME-WAIT"><span class="nav-number">1.2.0.4.3.</span> <span class="nav-text">4.3 CLOSE-WAIT TIME-WAIT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-TIME-WAIT%E7%8A%B6%E6%80%81%E8%BF%87%E5%A4%9A"><span class="nav-number">1.2.0.4.4.</span> <span class="nav-text">4.4 TIME-WAIT状态过多</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94-TCP%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">五.TCP可靠性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AD-%E8%BE%93%E5%85%A5URL%E6%98%BE%E7%A4%BA%E4%B8%BB%E9%A1%B5-1149-1249"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">六. 输入URL显示主页 1149 - 1249</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%83-HTTPS-1500"><span class="nav-number">1.2.0.7.</span> <span class="nav-text">七. HTTPS  1500</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#https-%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.0.7.1.</span> <span class="nav-text">https 加密过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AB-HTTP-%E9%95%BF%E7%9F%AD%E8%BF%9E%E6%8E%A5-1718"><span class="nav-number">1.2.0.8.</span> <span class="nav-text">八. HTTP 长短连接 1718</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%81%EF%BC%81%E4%B9%9D-Cookie-%E5%92%8C-Session%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.0.9.</span> <span class="nav-text">！！九. Cookie 和 Session的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%81-URI-%E5%92%8CURL"><span class="nav-number">1.2.0.10.</span> <span class="nav-text">十. URI 和URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%81%E5%8D%81%E4%B8%80-HTTP1-0-%E5%92%8C-HTTP1-1"><span class="nav-number">1.2.0.11.</span> <span class="nav-text">！十一. HTTP1.0 和 HTTP1.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP1-1-%E5%92%8C-http-2-0-%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.0.12.</span> <span class="nav-text">HTTP1.1 和 http 2.0 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C-get%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.0.13.</span> <span class="nav-text">十二. get和post的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%81%E4%B8%89-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">1.2.0.14.</span> <span class="nav-text">十三. 状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">1.2.0.15.</span> <span class="nav-text">十四. 正向代理和 反向代理</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lzhello</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

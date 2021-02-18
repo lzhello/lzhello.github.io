@@ -192,7 +192,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -202,7 +202,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -229,6 +229,133 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/lzhello/lzhello.github.io.git/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天才lzh自留地">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/" itemprop="url">TCP连接 学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-18T20:55:01+08:00">
+                2021-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="计网学习"><a href="#计网学习" class="headerlink" title="计网学习"></a>计网学习</h1><h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><p><strong>关键词</strong><br>面向连接的可靠的传输</p>
+<p>确认ACK（确认号是否有效，一般置为1）：占1位，仅当ACK=1时，确认号字段才有效。ACK=0时，确认号无效</p>
+<p>同步SYN（请求建立连接，并在其序列号的字段进行序列号的初始值设定。建立连接，设置为1）：连接建立时用于同步序号。当SYN=1，ACK=0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN=1，ACK=1。因此，SYN=1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有在TCP建产连接时才会被置1，握手完成后SYN标志位被置0。</p>
+<p>终止FIN（希望断开连接）：用来释放一个连接。FIN=1表示：此报文段的发送方的数据已经发送完毕，并要求释放运输连接</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -313,172 +440,14 @@
 
       
         
-          
-            <h4 id="！一-进程和线程的关系-1637-1707"><a href="#！一-进程和线程的关系-1637-1707" class="headerlink" title="！一. 进程和线程的关系  1637 - 1707"></a>！一. 进程和线程的关系  1637 - 1707</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">【两者的定义】</span><br><span class="line">    进程是程序运行的基本单位。一个进程可以有多个线程。</span><br><span class="line">    线程是 进程划分成更小的运行单位。多个线程【共享】进程的【堆和方法】区资源，</span><br><span class="line">    但每个线程【独占】一个【程序计数器、虚拟机栈、本地方法栈】。</span><br><span class="line">      </span><br><span class="line">【区别】： </span><br><span class="line">    1. 【是否独立】： 各个进程基本独立，而同一进程下的各个线程可能相互影响。 </span><br><span class="line">    2. 【开销大小】： 线程执行和切换开销小，不利于资源的管理。而进程相反。</span><br><span class="line">【线程】</span><br><span class="line">    程序计数器私有的原因 ：   线程切换时，恢复到原先的字节码指令</span><br><span class="line">    虚拟机栈&amp;本地方法栈 私有原因 ：  防止其他线程使用局部变量</span><br></pre></td></tr></table></figure>
-<h4 id="！二-如何避免死锁-1213"><a href="#！二-如何避免死锁-1213" class="headerlink" title="！二. 如何避免死锁 1213"></a>！二. 如何避免死锁 1213</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">死锁的【四个必要条件】</span><br><span class="line">1. 互斥条件 ： 临界资源任意时刻仅一个线程占有</span><br><span class="line">2. 请求与保持条件： 进程请求资源而阻塞，对已获得资源保持不放</span><br><span class="line">3. 不剥夺条件： 临界资源未所用完，则其他线程不能剥夺</span><br><span class="line">4. 循环等待条件 ： 循环等待资源</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">避免【线程死锁】</span><br><span class="line">1. 破坏互斥条件</span><br><span class="line">2. 破坏请求与保持条件 ： 一次性申请所有资源</span><br><span class="line">3. 破坏不剥夺条件 ： 线程申请资源，如果申请不到，则主动释放已有资源 </span><br><span class="line">4. 破坏循环等待条件 ：  按序申请资源，并反向释放资源。</span><br><span class="line">    所有线程先申请 资源1 ，再申请资源2.先释放资源2，再释放资源1 .</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="三-一些基础问题"><a href="#三-一些基础问题" class="headerlink" title="三. 一些基础问题"></a>三. 一些基础问题</h4><h5 id="3-1-sleep-和-wait的区别"><a href="#3-1-sleep-和-wait的区别" class="headerlink" title="3.1 sleep 和 wait的区别"></a>3.1 sleep 和 wait的区别</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 【是否释放锁】：sleep 没有释放锁，wait释放锁。 </span><br><span class="line">    因此 wait多用线程交互，sleep只是暂停线程执行</span><br><span class="line">2.  【是否自动苏醒】：</span><br><span class="line">    线程调用sleep()后，会自动苏醒。</span><br><span class="line">    线程调用wait() ，</span><br><span class="line">        若wait()无参，需要等待其他线程调 【同一对象】的notify() notifyAll()唤醒。</span><br><span class="line">        若wait()方法有timeout参数,则会超时后苏醒。</span><br></pre></td></tr></table></figure>
-<h5 id="3-2-为什么调用start执行run-，而不是直接调用run"><a href="#3-2-为什么调用start执行run-，而不是直接调用run" class="headerlink" title="3.2 为什么调用start执行run()，而不是直接调用run()"></a>3.2 为什么调用start执行run()，而不是直接调用run()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">直接调用run()方法： 只是在main()线程中将run方法作为普通方法调用，还是在main线程中执行。这并不是多线程</span><br><span class="line">调用start()方法 ： 启动一个线程 &amp; 使该线程进入就绪状态，当该线程分配到时间片后开始运行。</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="四-Synchronized-相关问题-1546"><a href="#四-Synchronized-相关问题-1546" class="headerlink" title="四. Synchronized 相关问题 1546"></a>四. Synchronized 相关问题 1546</h4><h5 id="4-1-sychronized-使用方式"><a href="#4-1-sychronized-使用方式" class="headerlink" title="4.1 sychronized 使用方式"></a>4.1 sychronized 使用方式</h5><p>Synchronized 修饰对象 = {1. 代码块  2. 方法}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. Synchronized 修饰 静态方法 ||  Sychronized(Class)修饰代码块 &#x3D; &#123;</span><br><span class="line">    Class 类上锁</span><br><span class="line">&#125;</span><br><span class="line">2. Synchronized 修饰 实例方法 &#123;</span><br><span class="line">    该类的某个对象实例上锁</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="！4-2-单例模式-【双重校验锁】-实现对象单例"><a href="#！4-2-单例模式-【双重校验锁】-实现对象单例" class="headerlink" title="!！4.2 单例模式 =  【双重校验锁】 实现对象单例"></a>!！4.2 单例模式 =  【双重校验锁】 实现对象单例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Class Singleton&#123;</span><br><span class="line">    &#x2F;&#x2F; 为什么 volatile修饰</span><br><span class="line">    ---</span><br><span class="line">    </span><br><span class="line">    JVM指令重排 ，为对象分配内存空间，并且uniqueInstance指向该内存地址，但是对象并未初始化</span><br><span class="line">    线程T2调用get方法，在外层校验中发现uniqueInstance！&#x3D;null,则直接返回。【但此时uniqueInstance未被初始化】</span><br><span class="line">    </span><br><span class="line">    ---</span><br><span class="line">    </span><br><span class="line">    private volatile static Singleton uniqueInstance ;</span><br><span class="line">    </span><br><span class="line">    private Singleton()&#123;</span><br><span class="line">        &#x2F;&#x2F; 私有构造器     </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private static Singleton getInstance()&#123; </span><br><span class="line">        if(uniqueInstance&#x3D;&#x3D;null)&#123; &#x2F;&#x2F; 检测单例是否已经创建</span><br><span class="line">            Synchronized(Singleton.class)&#123;</span><br><span class="line">                if(uniqueInstance&#x3D;&#x3D;null)&#123; &#x2F;&#x2F; 检测其他线程是否先获取锁创建了单例对象</span><br><span class="line">                    uniqueInstance &#x3D; new Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return uniqueInstance ; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="4-3-JDK1-6后-Synchronized的底层优化-1041"><a href="#4-3-JDK1-6后-Synchronized的底层优化-1041" class="headerlink" title="!! 4.3 JDK1.6后 Synchronized的底层优化 1041"></a>!! 4.3 JDK1.6后 Synchronized的底层优化 1041</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">四种锁状态 ： 无锁 --&gt; 偏向锁 --&gt; 轻量级锁 ---&gt;重量级锁</span><br><span class="line">锁随着【竞争程度】上升，逐渐升级。但不可降级。</span><br><span class="line"></span><br><span class="line">1. 【初次执行Synchronized代码块】，锁对象变为【偏向锁】</span><br><span class="line">    (通过CAS操作修改对象头中【锁标志位】和【持锁线程ID】)。</span><br><span class="line">    (偏向锁意为偏向于第一个获取它的线程)。执行完同步块后，线程不主动释放偏向锁。</span><br><span class="line">    当执行下一个同步块时，检测该当前想要获取锁的线程是否就是持有锁的线程。</span><br><span class="line">    如果是，则正常执行。【线程没有释放锁，因此也不用重新加锁】</span><br><span class="line">    </span><br><span class="line">2. 【一旦出现锁竞争】，偏向锁升级为【轻量级锁】。</span><br><span class="line">    如果锁标志位&#x3D;释放，则线程通过【CAS操作】修改锁标志位，并获取锁。</span><br><span class="line">    如果锁标志位&#x3D;锁定，则线程通过【自旋】等待锁的释放。</span><br><span class="line">    自旋：一个线程获取锁，其他线程通过忙循环等待线程释放锁。</span><br><span class="line">    轻量级锁本质 &#x3D; 【忙等开销 换取 用户态切换到核心态的开销】</span><br><span class="line">    </span><br><span class="line">3. 【忙等是有限度】，当某个线程自旋次数达到最大自选次数。</span><br><span class="line">    该线程通过CAS操作修改对象头的锁标志位，表明轻量级锁升级为【重量级锁】</span><br><span class="line">    一个线程持有锁时，其他请求线程只能阻塞等待。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<h5 id="4-4-synchronized-底层"><a href="#4-4-synchronized-底层" class="headerlink" title="4.4 synchronized 底层"></a>4.4 synchronized 底层</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sychronized 修饰 代码块 || 方法 </span><br><span class="line">    1.修饰代码块时 </span><br><span class="line">        通过 【monitorenter 和 monitorExit 两条指令】，分别指定同步代码块的 开始位置和结束位置。</span><br><span class="line">        线程获取锁 &#x3D; 获取位于对象头的monitor的持有权</span><br><span class="line">        获取到锁，则计数器++。 执行到monitorExit，则计数器--</span><br><span class="line">        </span><br><span class="line">    2.修饰方法 </span><br><span class="line">        JVM通过 ACC_SYNCHRONIZED 辨别方法为同步方法 </span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    【面试口头】</span><br><span class="line">        Sychronized 是【JVM】层面的关键字。它是通过 【字节码指令】实现的。</span><br><span class="line">           (1) Sychronized 修饰 【代码块】时，montior-enter monitor-exit两个字节码指令表明 同步块的开始和结束位置。</span><br><span class="line">           (2) Sychronized 修饰 【方法】时，JVM中通过ACC_SYCHRONIZED 标志同步方法 </span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line">##### ！4.5  ReentrantLock 和 Sychronized 区别 </span><br></pre></td></tr></table></figure>
-<pre><code>1.  两者都是【可重入锁】 : 
-    获得某一对象锁时，若自己未释放，也可重复再次获得该对象的锁 。 锁计数器++ 
-
-2. Sychronized 依赖JVM实现，而ReentrantLock 依赖API实现(JDK层面)
-    ReentrantLock 调用 lock() unlock() try/finally语句 实现同步块，可以直接查看源代码
-    Sychronized 在JVM层面，通过字节码指令 monitorEnter monitorExit指定同步块的开始和结束位置 
-
-3. ReentrantLock 实现高级功能
-    (1) ReentrantLock实现等待可中断 ： 
-        通过调用 lockInterruptibly() 中断等待锁的线程
-    (2) ReentrantLock可实现公平锁，而Sychronized仅实现非公平锁：
-        公平锁 = 先等待的线程，先获得锁
-    (3) 等待/通知机制 不同：
-        Sychronized 通过 notiy() notifyAll() wait() 实现等待/通知机制
-        ReentrantLock 通过 Condition对象实现。
-            一个lock可创建多个Condition对象，一个Condition对象可注册多个线程。
-            Condition 对象调用signal ||signalAll() 
-                唤醒线程所在范围 =  注册的线程，
-            而Sychronized 调用 notify() || notifyAll() 
-                唤醒线程 = JVM选择的
-            因此 ReentrantLock的等待通知机制更加灵活</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">#### 五. volatile </span><br><span class="line">##### 5.1 volatile 作用</span><br></pre></td></tr></table></figure>
-<pre><code>1. 防止指令重排
-2. 保证变量的可见性
-    当前Java内存模型，不是从主存读取变量，而是将变量保存在本地内存(寄存器)。
-    可能存在 一个线程修改【主存】中的变量值，而另一个线程仍使用【本地内存】中的变量拷贝值，
-    造成【数据】不一致。
-    变量声明为volatile，即告知JVM该变量不稳定。每次要在主存中读取值。</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 5.2 Synchronized 和 volatile 的区别</span><br></pre></td></tr></table></figure>
-<ol>
-<li>【是否阻塞】<br> volatile 不会造成阻塞，Synchronized会造成阻塞</li>
-<li>【作用范围不同】<br> volatile 只能修饰变量， Synchronized 修饰 代码块和 方法 </li>
-<li>【作用不同】<br> volatile 主要用于保证变量在多个线程之间的可见性，而Synchronized则是保证临界资源在多个线程之间的同步性<br> volatile 仅保证变量的可见性，而不保证原子性。Synchronized两者都能保证</li>
-<li>【效率】<br> volatile 是 线程同步的轻量级实现，效率高于Sychronized</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">#### 五. ThreadLocal  </span><br><span class="line">作用 ： 和每个线程绑定专属的本地变量</span><br><span class="line"></span><br><span class="line">##### ！5.1 ThreadLocal 底层原理 </span><br><span class="line">每个Thread对象中具备threadLocalMap ，而threadLocalMap中存储 key&#x3D;threadLocal的键值对。</span><br><span class="line">ThreadLocal.get() threadLocal.set();</span><br><span class="line">##### 5.2 软引用 &amp; 弱引用</span><br></pre></td></tr></table></figure>
-<pre><code>虚引用-&gt; 弱引用 -&gt; 软引用 -&gt; 强引用
-弱引用被GC线程发现后，不论内存空间是否不足，都立刻回收
-软引用被GC线程发现后，如果内存空间不足，则回收</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line">#### ！！六. 线程池 1057 </span><br><span class="line"></span><br><span class="line">作用 ： 减少 创建和销毁线程的开销，任务无需等待线程创建可立即执行。</span><br><span class="line"></span><br><span class="line">##### 6.1 callable 和 runnable 的区别</span><br></pre></td></tr></table></figure>
-<p>callable 可返回值||抛出异常，runnable不行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 6.2 submit 和 execute 区别</span><br></pre></td></tr></table></figure>
-<p>execute提交【无返回值】的任务，无法根据返回值判断任务是否成功执行<br>submit提交【有返回值】的任务，根据返回值判断任务是否成功执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 6.3  【如何】创建线程池 1344</span><br></pre></td></tr></table></figure>
-<pre><code>方法1 ： 通过构造器 
-ThreadPoolExecutor();
-！！ 【构造器参数】
-
-    1. int corePoolSize：
-        任务数 &lt; 核心池大小 ，
-        则将任务交给空闲线程 || 创建新线程 处理  
-    2. int maximunPoolSize：
-        等待队列已满 &amp; 核心池大小&lt;任务数&lt; 最大线程数量，
-        则创建临时线程
-    3. long keepAliveTime,TimeUtil：
-        线程空闲时间 &gt; 指定时间后，则线程销毁
-    4. BlockingQueue&lt;Runnable&gt; workQueue,
-        任务数&gt;核心池大小 &amp; 请求队列未满 ，
-        则任务加入请求队列
-
-    5. ThreadFactory
-        负责创建线程
-    6. handler 制定拒绝策略
-方法2： 通过【工具类Executors】 创建线程池。 线程池类型如下 
-    1. FixedThreadPool ： 线程数量固定
-    2. SingleThreadExecutor : 线程数量=1 ，多余任务提交给线程池则进入等待队列
-        如果创建这两类线程池，则其 请求队列长度=Integer.MAX_VALUE;
-        可能堆积大量请求而导致OOM
-
-    3. CachedThreadPool ： 线程数量不固定，优先复用空闲线程
-        该类线程池，允许创建的线程数量=Integer.MAX_VALUE,
-        可能创建过多线程，导致OOM</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 6.4 线程池拒绝策略</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>abort : 默认使用的拒绝策略， 拒绝执行任务，抛出异常</p>
-</li>
-<li><p>CallerRunPolicy ： 调用 当前线程池所在线程执行任务</p>
-</li>
-<li><p>discard ： 直接抛弃任务，不做任何处理</p>
-</li>
-<li><p>discardOldest ： 抛弃 请求队列中最早的任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 6.5 Executor创建线程池的【弊端】</span><br></pre></td></tr></table></figure>
-<p> FixedThreadPool 、SingleThreadExecutor 中等待队列长度设置为Integer.MAX_VALUE</p>
-<p> CachedThreadPool 和 ScheduledThreadPool 允许最大线程数设置为 Integer.MAX_VALUE</p>
-<p> 这两者都可能造成 OOM的问题</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">#### 七. AQS 1430 </span><br><span class="line">![image](https:&#x2F;&#x2F;note.youdao.com&#x2F;yws&#x2F;res&#x2F;43414&#x2F;400F2FB130F9470BAD70079722D25F33)</span><br></pre></td></tr></table></figure>
-<p>一. AQS 是构建同步器的【框架】<br>        【核心思想】 ： 线程请求资源<br>        情况1 ： 资源空闲<br>            则 请求线程设置为工作线程，资源上锁<br>        情况2 ： 资源被占用<br>            则 请求线程阻塞，加入CLH队列。等待资源空闲时竞争资源</p>
-<p>二. AQS 定义两种 资源共享模式<br>    1. 独占锁 Exclusive  ： 锁只能被一个线程占有<br>        例如 ： ReentrantLock 又分为 公平锁和非公平锁</p>
-<pre><code>2. 共享锁 shared    ： 多个线程共享锁
-    例如 ： CountDownLatch 、Semaphore</code></pre>
-<p>三. AQS框架 自定义模块<br>    尝试 获取/释放 独占资源<br>    tryAcquire()<br>    tryRelease()<br>    尝试 获取/释放共享资源<br>    tryAcquireShared()<br>    tryReleaseShared()</p>
-<p>四. AQS 常见组件<br>    1. ReentrantLock<br>        A 线程调用 lock()方法<br>        若 state=0 ，<br>            则资源空闲 ，state++，且 A线程可重复获取锁 </p>
-<pre><code>    若 state！=0 ， 
-        则资源被占有，当state=0时其他线程才能竞争
-
-2. CountDownLatch 
-    (1) 构造器初始化 【state = N】
-
-        当【子线程】调用countDown(),通过 CAS操作state自减1
-
-        当state=0 时，调用await的线程 恢复正常继续执行
-
-3. CyclicBarrier 
-    构造方法 state=n
-
-    每当一个线程调用 await()方法，则CAS操作state自减1
-
-    当state=0 时 ，所有调用await()的线程恢复</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">##### AQS源码 </span><br></pre></td></tr></table></figure>
-<pre><code>1. aquire()
-
-public void aquire()&#123;   
-    if(!tryAcquire()    // 尝试获取一次  
-        &amp;&amp; acquireQueued(addWaiter(Node.EXCLUSIVE),arg)) 
-            // acquireQueued 【作用】： 自旋检测  (tryAcquire()&amp;&amp; node==head.next)
-            // addWaiter【作用】： 添加当前线程node至 队列尾部
-
-        selfInterrupt();
-    &#125;
-【问题】： 为何不仅调用 acuqireQueued(addWaiter())
-    优先尝试最可能成功的代码， 可减少执行的字节码指令</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 八. 用户态和核心态 1425 </span><br></pre></td></tr></table></figure>
-<pre><code>指令分为 特权指令和非特权指令
-其中 特权指令必须在核心态执行，如 启动IO /内存清零 /修改程序状态字</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 九. [乐观锁和悲观锁](https:&#x2F;&#x2F;www.zhihu.com&#x2F;search?type&#x3D;content&amp;q&#x3D;%E6%82%B2%E8%A7%82%E9%94%81%E5%92%8C%E4%B9%90%E8%A7%82%E9%94%81) 很不错的总结</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>悲观锁和乐观锁 是锁的两种分类，并非特指某一个锁。
-悲观锁【通过阻塞机制】实现，乐观锁通过【回滚重试】实现。
-
-1. 悲观锁 ：
-    【描述】：线程独占临界资源，在线程执行完毕前，其他【请求】线程只能【阻塞】等待
-    【适用场景】： 写操作较多，资源竞争激烈。
-2. 乐观锁 ：
-    【描述】：乐观锁并【未上锁】，【更新前】检测该数据在【读取到更新】这一段时间内是否被其他线程修改。如果被修改，则循环操作直到成功为止。
-    【使用场景】: 读操作较多，资源竞争情况较少
-3. CAS 是原子性操作，是乐观锁实现的基础：
-    （1） 读取值A，在更新为B之前，检测【原值】是否为A
-    （2） 如果是，则更新为B
-          如果不是，则更新失败。</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 十. Atomic原子性</span><br></pre></td></tr></table></figure>
-<p>通过 {<br>    unsafe CAS操作<br>    Volitle 修饰属性，保证可见<br>}</p>
-<pre><code>
-#### 十一. 多线程内存模型
-</code></pre>
-
-          
+          <h4 id="一-进程和线程的关系-1637-1707"><a href="#一-进程和线程的关系-1637-1707" class="headerlink" title="一. 进程和线程的关系  1637 - 1707"></a>一. 进程和线程的关系  1637 - 1707</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">【两者的定义】</span><br><span class="line">    进程是程序运行的基本单位。一个进程可以有多个线程。</span><br><span class="line">    线程是 进程划分成更小的运行单位。多个线程【共享】进程的【堆和方法】区资源，</span><br><span class="line">    但每个线程【独占】一个【程序计数器、虚拟机栈、本地方法栈】。</span><br><span class="line">      </span><br><span class="line">【区别】： </span><br><span class="line">    1. 【是否独立】： 各个进程基本独立，而同一进程下的各个线程可能相互影响。 </span><br><span class="line">    2. 【开销大小】： 线程执行和切换开销小，不利于资源的管理。而进程相反。</span><br><span class="line">【线程】</span><br><span class="line">    程序计数器私有的原因 ：   线程切换时，恢复到原先的字节码指令</span><br><span class="line">    虚拟机栈&amp;本地方法栈 私有原因 ：  防止其他线程使用局部变量</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/18/%E5%B9%B6%E5%8F%91learning-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -595,119 +564,19 @@ public void aquire()&#123;
 
       
         
-          
-            <font size =4 >
+          <font size =4 >
 
 <h4 id="一-Java-方法中-仅存在【值传递】"><a href="#一-Java-方法中-仅存在【值传递】" class="headerlink" title="一.Java 方法中 仅存在【值传递】"></a>一.Java 方法中 仅存在【值传递】</h4><p>方法得到 所有【参数值的拷贝】，<br>    因此，方法不能修改一个基本数据，<br>【对象引用作为参数】，则该参数和对象引用 指向同一个对象，  </p>
 <hr>
 <h4 id="！！二-和-equals-区别"><a href="#！！二-和-equals-区别" class="headerlink" title="！！二. == 和 equals 区别"></a>！！二. == 和 equals 区别</h4><h5 id="1"><a href="#1" class="headerlink" title="1. =="></a>1. ==</h5><p> == 判断两个对象的【<strong>地址</strong>】是否相同， 即是否【<strong>同一个对象</strong>】</p>
 <h5 id="2-equals"><a href="#2-equals" class="headerlink" title="2. equals"></a>2. equals</h5><p>equals 分两种情况<br>(1) equals 【<strong>没有被类重写</strong>】，则equals方法等价==<br>(2) equals 【<strong>被类重写</strong>】， 则根据重写方法 判断两个对象内容是否相等  </p>
-<hr>
-<h4 id="！！三-为什么重写euqals-方法-必须重写-hashCode"><a href="#！！三-为什么重写euqals-方法-必须重写-hashCode" class="headerlink" title="！！三. 为什么重写euqals 方法 必须重写 hashCode()"></a>！！三. 为什么重写euqals 方法 必须重写 hashCode()</h4><ol>
-<li><p>两个对象 hashCode() 所得hash值相等 ， 但equals()方法不一定返回true  </p>
-</li>
-<li><p>两个对象 equals() 返回true，那么对象调用hashCode()返回的hash值一定相等  </p>
-</li>
-<li><p> 如果 仅重写 equals(),而不重写hashcode(),则存在 equals方法会返回true，而hashcode()方法返回的hash值不相等  </p>
-</li>
-<li><p>HashMap中 两个key 重复  </p>
-</li>
-</ol>
-<h4 id="3-1-为什么hash值相同，而两个对象不一定equals"><a href="#3-1-为什么hash值相同，而两个对象不一定equals" class="headerlink" title="3.1 为什么hash值相同，而两个对象不一定equals"></a>3.1 为什么hash值相同，而两个对象不一定equals</h4><ul>
-<li>hashCode() 算法存在碰撞情况</li>
-</ul>
-<hr>
-<h4 id="！！四-String-和-StringBuffer、StringBuilder-区别"><a href="#！！四-String-和-StringBuffer、StringBuilder-区别" class="headerlink" title="！！四. String 和 StringBuffer、StringBuilder 区别"></a>！！四. String 和 StringBuffer、StringBuilder 区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(1) String 【**字符串常量**】 ：  </span><br><span class="line">    内部的 char[] 是通过final修饰符修饰</span><br><span class="line">    因此String是不可变对象</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">(2) StringBuffer ： 线程安全  </span><br><span class="line">(3) StringBuilder ：</span><br><span class="line">    StringBuffer 和 StringBuilder 都 继承 AbstractStringBuilder</span><br><span class="line">    </span><br><span class="line">    该父类定义了append insert等公共方法  </span><br><span class="line">    StringBuffer 对实现的方法加上同步锁，线程安全</span><br><span class="line">    StringBuilder 对实现的方法没有上锁，所以线程非安全</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">String  ：  适用操作少量数据</span><br><span class="line">StringBuilder ： 适用于 【单线程】操作大量数据</span><br><span class="line">StringBuffer ：适用于 【多线程】操作大量数据</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="！！五-反射"><a href="#！！五-反射" class="headerlink" title="！！五. 反射"></a>！！五. 反射</h4><p>反射 ： 是把java类中各个成分 映射成一个个java对象</p>
-<h5 id="1-获取class对象三种方式"><a href="#1-获取class对象三种方式" class="headerlink" title="(1) 获取class对象三种方式"></a>(1) 获取class对象三种方式</h5><ol>
-<li>object.getClass()    // 通过【对象实例】获取class</li>
-<li>Object.class;        // 通过【类的静态class属性】 获取class </li>
-<li>Class.forName(String className) // 通过 【class名】获取 class</li>
-</ol>
-<h5 id="2-运行期间，一个类只能有一个Class对象产生"><a href="#2-运行期间，一个类只能有一个Class对象产生" class="headerlink" title="(2) 运行期间，一个类只能有一个Class对象产生"></a>(2) 运行期间，一个类只能有一个Class对象产生</h5><h5 id="3-反射的应用场景"><a href="#3-反射的应用场景" class="headerlink" title="!!(3) 反射的应用场景"></a>!!(3) 反射的应用场景</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.  JDBC 连接数据库时，反射加载 【驱动程序】</span><br><span class="line"></span><br><span class="line">Class.forNmae(&quot;com.mysql.jdbc.Driver&quot;); &#x2F;&#x2F; 加载驱动程序</span><br><span class="line"></span><br><span class="line">2. Spring中 IOC容器根据配置文件信息--&gt; 获取类文件信息--&gt;反射创建bean实例 ，并反射调用Set方法设置属性</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="4-反射-优缺点"><a href="#4-反射-优缺点" class="headerlink" title="!!(4) 反射 优缺点"></a>!!(4) 反射 优缺点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.  优点： 在【运行时】，动态加载类，使代码更灵活</span><br><span class="line">2. 缺点 ： 反射是一系列解释性操作，通过JVM实现。效率低于Java代码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="5-反射定义"><a href="#5-反射定义" class="headerlink" title="(5) 反射定义"></a>(5) 反射定义</h5><h2 id="反射本质就是根据-类的字节码信息，将类的内部属性方法一一映射成Java对象"><a href="#反射本质就是根据-类的字节码信息，将类的内部属性方法一一映射成Java对象" class="headerlink" title="反射本质就是根据 类的字节码信息，将类的内部属性方法一一映射成Java对象"></a>反射本质就是根据 类的字节码信息，将类的内部属性方法一一映射成Java对象</h2><h4 id="六-接口和抽象类-的区别-1036"><a href="#六-接口和抽象类-的区别-1036" class="headerlink" title="!! 六. 接口和抽象类 的区别 1036"></a>!! 六. 接口和抽象类 的区别 1036</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 接口是对行为(方法)的抽象，是一种对行为的规范。抽象类是对类的抽象，提供设计模板。</span><br><span class="line">2. 一个类可实现多个接口，</span><br><span class="line">    一个类只能继承一个抽象类</span><br><span class="line">3. 类实现接口，则接口内抽象方法必须全部实现。 </span><br><span class="line">    类继承抽象类，则抽象类内抽象方法不一定全部实现</span><br><span class="line">4. 接口内实例变量默认final类型，方法默认public。而抽象类内没有限制。</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="七-重写和重载的区别"><a href="#七-重写和重载的区别" class="headerlink" title="七. 重写和重载的区别"></a>七. 重写和重载的区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    1. 重写 ： 【方法的外貌没有改变，方法提供的行为改变】</span><br><span class="line">            【返回值】【抛出异常类型】 都是其父类方法的子类 </span><br><span class="line">            【访问修饰符】 子类访问权限&gt;&#x3D;父类访问权限 </span><br><span class="line">    2. 重载 ： </span><br><span class="line">       【参数】 【返回值】 【访问修饰符范围】 都发生改变 </span><br><span class="line">&#96;&#96;&#96;     </span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 八. 异常体系  1036-11</span><br></pre></td></tr></table></figure>
-<pre><code>1. 所有异常继承公共祖先【throwable类】
-2. 异常分为两大类 ： Exception &amp; Error
-    (1) Error 是【程序无法处理】的错误，大部分是代码在JVM运行时出现问题。
-        如 程序申请内存时，内存资源不足。抛出OOM
-        Error发生时，JVM一般会【终止】线程
-    (2) Exception是【程序可以处理】的错误
-        常见Exception： 
-            ArithmeticException 算数异常
-            NullPointException 空指针异常
-            ArrayIndexOutOfBoundsException 下标越界</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">#### 九. 深拷贝 &amp; 浅拷贝</span><br></pre></td></tr></table></figure>
-<p>浅拷贝 ： 对基本数据类型【值传递】，对引用数据类型进行 引用地址拷贝<br>深拷贝 ： 对基本数据类型【值传递】，对引用数据类型，则创建新对象，并复制其内容到新对象中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">####  十. 泛型 1404</span><br></pre></td></tr></table></figure>
-<pre><code>1.  【泛型的作用】
-    泛型是 【编译期】的【类型确认】机制。在【编译期】确认【容器】内元素为正确类型。防止ClassCastException
-
-2. 【泛型擦除】
-    编译器在【编译期】，确认类型正确后，擦除【容器的类型信息】。所以在【运行时】，容器不存在【类型信息】。   
-    如List&lt;String&gt; 在JVM中运行时 仅为List，不存在&lt;String&gt;信息
-
-3. 【】
-    List&lt;Object&gt; list 不能引用 List&lt;String&gt;对象
-    Lis&lt;?&gt;List 可以引用List&lt;String&gt;对象</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![image](A1EF5B82F0EC445EBEA6702EECF32E02)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 十一. final</span><br></pre></td></tr></table></figure>
-<pre><code>final 修饰 变量 、 方法 、 类 
-    1. 修饰【变量】：
-        变量 = 基础数据类型 ， 则变量值不可变
-        变量 = 引用数据类型， 则引用对象不可变
-    2. 修饰【类】
-        类不能被继承
-    3. 修饰【方法】
-        方法不能被子类重写</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 十二. Java 三大特性: 封装 + 继承 + 多态 </span><br><span class="line"> </span><br><span class="line">##### 1. 封装 </span><br><span class="line">对象属性【私有化】 ， 提供外界【访问】属性的方法</span><br><span class="line"></span><br><span class="line">##### 2. 继承</span><br></pre></td></tr></table></figure>
-<ol>
-<li>子类 拥有父类的属性和方法 ， 但是父类privete属性和方法 子类无法调用</li>
-<li>子类可【扩展】，拥有自己的属性和方法</li>
-<li>子类 重写 父类的方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 3. 多态</span><br></pre></td></tr></table></figure>
-对象引用 指向的实例类型未知<br>因此 ，【对象引用的方法调用 】，在【运行时】确定调用的是哪个方法</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 十三. Object 方法 </span><br><span class="line">##### equal hashcode</span><br></pre></td></tr></table></figure>
-<pre><code>@Override
-    public boolean equals(Object obj) &#123;
-        if (obj != null &amp;&amp; obj.getClass() == this.getClass()) &#123;
-            Person person= (Person) obj;// 强转类型
-
-            return name.equals(person.getName())&amp;&amp;person.age==age;
-
-        &#125;
-        return false;
-&#125;</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##### getClass</span><br><span class="line">    获得类文件对象</span><br><span class="line">##### clone</span><br><span class="line">    深浅拷贝</span><br><span class="line">##### finalize</span><br></pre></td></tr></table></figure>
-<pre><code>用于GC的垃圾回收
-1. 实例不可达，GC判断实例是否【重写】finalize方法，未重写则直接回收
-2. 否则，将实例加入F-Queue队列，由低优先级线程执行F-Queue中实例的finalize方法
-3. finalize方法执行完毕后，【再次】判断实例对象是否可达。可达则复活，否则回收</code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 设计模式</span><br><span class="line"></span><br><span class="line">##### 创建模式： 工厂模式 、抽象工厂模式、单例模式</span><br><span class="line"></span><br><span class="line">##### 工厂模式</span><br><span class="line">意义： 为对象的创建提供接口，隔离具体的创建过程</span><br><span class="line">&#123;</span><br><span class="line">    1. 扩展性 ： 构造器修改</span><br><span class="line">    2. 降低代码量： 创建对象的过程有一定代码量，且在多处使用。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>简单工厂模式<br>    工厂类(唯一)、抽象产品类(唯一)、具体产品类<br>    每当添加具体产品，则需要在唯一工厂类中添加相应业务逻辑，这不符合 开放封闭原则</p>
-<pre><code>适用于： 创建具体产品较少场景</code></pre>
-<p>工厂方法模式<br>    抽象工厂类、具体工厂类、抽象产品、具体产品<br>    抽象工厂类提供创建接口，而其子类(具体工厂)确定要创建的对象<br>    每添加一个具体产品，对应添加一个具体工厂类</p>
-<p>抽象工厂模式<br>    抽象工厂(一组) 、具体工厂、抽象产品、具体产品</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 单例模式</span><br><span class="line">饿汉式 + 懒汉式</span><br><span class="line"></span><br><span class="line">##### 结构模式：[装饰器模式、代理模式](https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;c06a686dae39) </span><br></pre></td></tr></table></figure>
-<p>两者内部都持有 原对象属性</p>
-<p>代理：<br>    注重 如何调用源对象某一个功能，<br>        不需要兼顾源对象的其他功能</p>
-<p>装饰：<br>    注重 原对象【功能扩展】。<br>    装饰类实例需要【兼顾】原对象的其他方法。因为扩展后的对象仍是是对象本身。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 十四. 静态内部类 和内部类</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p> 静态内部类可以有静态成员(方法，属性)，而非静态内部类则不能有静态成员</p>
-</li>
-<li><p>静态内部类 访问 外部类的【静态】静态成员,<br>  而非静态内部类 访问 外部类的【所有成员】(方法，属性)</p>
-</li>
-<li><p>静态内部类【实例创建】 不依赖于外部类的实例，通过类名直接调用构造器<br>非静态内部类【实例创建】，依赖于外部类的实例，通过外部实例调用构造器</p>
-</li>
-</ol>
-<p>```</p>
-<h5 id="十五-线程池只是销毁了超出核心线程数目的空闲线程而已-没有标记表明线程是否核心"><a href="#十五-线程池只是销毁了超出核心线程数目的空闲线程而已-没有标记表明线程是否核心" class="headerlink" title="十五. 线程池只是销毁了超出核心线程数目的空闲线程而已,没有标记表明线程是否核心"></a>十五. 线程池只是销毁了超出核心线程数目的空闲线程而已,没有标记表明线程是否核心</h5>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/01/18/java%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -950,8 +819,7 @@ public void aquire()&#123;
 
       
         
-          
-            <h1 id="我的博客文章"><a href="#我的博客文章" class="headerlink" title="我的博客文章"></a>我的博客文章</h1><h2 id="这是一个二级标题"><a href="#这是一个二级标题" class="headerlink" title="这是一个二级标题"></a>这是一个二级标题</h2><h3 id="这是一个三级标记（-后面一定要加空格）"><a href="#这是一个三级标记（-后面一定要加空格）" class="headerlink" title="这是一个三级标记（#后面一定要加空格）"></a>这是一个三级标记（#后面一定要加空格）</h3><p><em>这一句话会是斜体</em></p>
+          <h1 id="我的博客文章"><a href="#我的博客文章" class="headerlink" title="我的博客文章"></a>我的博客文章</h1><h2 id="这是一个二级标题"><a href="#这是一个二级标题" class="headerlink" title="这是一个二级标题"></a>这是一个二级标题</h2><h3 id="这是一个三级标记（-后面一定要加空格）"><a href="#这是一个三级标记（-后面一定要加空格）" class="headerlink" title="这是一个三级标记（#后面一定要加空格）"></a>这是一个三级标记（#后面一定要加空格）</h3><p><em>这一句话会是斜体</em></p>
 <p><strong>这一句话会被加粗</strong></p>
 <p><strong><em>这一句话会被斜体加粗</em></strong></p>
 <p><del>这一句话会有删除线</del></p>
@@ -964,68 +832,13 @@ public void aquire()&#123;
 </blockquote>
 </blockquote>
 </blockquote>
-<p>接下来是分割线</p>
-<hr>
-<hr>
-<h3 id="这里是超链接"><a href="#这里是超链接" class="headerlink" title="这里是超链接"></a>这里是超链接</h3><p><a target="_blank" rel="noopener" href="http://baidu.com/">百度</a></p>
-<h3 id="这里是无序列表"><a href="#这里是无序列表" class="headerlink" title="这里是无序列表"></a>这里是无序列表</h3><ul>
-<li>列表1</li>
-</ul>
-<ul>
-<li>列表2</li>
-</ul>
-<ul>
-<li>列表3<ul>
-<li>列表嵌套（前加三个空格）</li>
-</ul>
-</li>
-</ul>
-<h3 id="这里是有序列表"><a href="#这里是有序列表" class="headerlink" title="这里是有序列表"></a>这里是有序列表</h3><ol>
-<li>列表1</li>
-<li>列表2</li>
-<li>列表3</li>
-</ol>
-<h3 id="这里是表格"><a href="#这里是表格" class="headerlink" title="这里是表格"></a>这里是表格</h3><table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<h3 id="这里是代码"><a href="#这里是代码" class="headerlink" title="这里是代码"></a>这里是代码</h3><p><code>printf(&#39;hello,world);</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fun()&#123;</span><br><span class="line">     System.out.println(&quot;hello,world&quot;);</span><br><span class="line">&#125;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
-
-
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/12/firstblog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1235,9 +1048,9 @@ public void aquire()&#123;
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%7C%7C%20archive">
+                <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1245,6 +1058,15 @@ public void aquire()&#123;
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -1258,6 +1080,22 @@ public void aquire()&#123;
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lzhello" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="lzhelloo@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
