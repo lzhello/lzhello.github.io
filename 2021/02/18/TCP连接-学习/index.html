@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="天才lzh自留地" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="lzhello的碎碎念" type="application/atom+xml" />
 
 
 
@@ -85,7 +85,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP连接 学习">
 <meta property="og:url" content="https://github.com/lzhello/lzhello.github.io.git/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/index.html">
-<meta property="og:site_name" content="天才lzh自留地">
+<meta property="og:site_name" content="lzhello的碎碎念">
 <meta property="og:description" content="计网学习TCP&#x2F;IP关键词面向连接的可靠的传输 确认ACK（确认号是否有效，一般置为1）：占1位，仅当ACK&#x3D;1时，确认号字段才有效。ACK&#x3D;0时，确认号无效 同步SYN（请求建立连接，并在其序列号的字段进行序列号的初始值设定。建立连接，设置为1）：连接建立时用于同步序号。当SYN&#x3D;1，ACK&#x3D;0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN&#x3D;1，ACK&#x3D;1。因此，SYN&#x3D;">
 <meta property="og:locale">
 <meta property="og:image" content="https://note.youdao.com/yws/res/43474/4FC3472641744C66B229F5234DAE043C">
@@ -106,7 +106,7 @@
     root: '',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -132,7 +132,7 @@
 
 
 
-  <title>TCP连接 学习 | 天才lzh自留地</title>
+  <title>TCP连接 学习 | lzhello的碎碎念</title>
   
 
 
@@ -151,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -162,7 +162,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">天才lzh自留地</span>
+        <span class="site-title">lzhello的碎碎念</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -216,6 +216,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -254,11 +264,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天才lzh自留地">
+      <meta itemprop="name" content="lzhello的碎碎念">
     </span>
 
     
@@ -292,6 +302,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/02/18/TCP%E8%BF%9E%E6%8E%A5-%E5%AD%A6%E4%B9%A0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -299,6 +319,25 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.3k
+                </span>
+              
+
+              
+
+              
+            </div>
           
 
           
@@ -449,6 +488,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -484,6 +526,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
             
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -592,6 +638,15 @@
   <span class="author" itemprop="copyrightHolder">lzhello</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">14k</span>
+  
 </div>
 
 
@@ -624,6 +679,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -649,6 +706,8 @@
 
   
 
+
+  
 
 
 
@@ -688,6 +747,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -753,6 +817,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'GtCtI94yO18eQvvJRre7GbmU-gzGzoHsz',
+        appKey: '7Bc7UDA3574iWiw9pGgRc8VS',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

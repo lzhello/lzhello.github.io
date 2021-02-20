@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="天才lzh自留地" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="lzhello的碎碎念" type="application/atom+xml" />
 
 
 
@@ -85,7 +85,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="并发learning">
 <meta property="og:url" content="https://github.com/lzhello/lzhello.github.io.git/2021/02/18/%E5%B9%B6%E5%8F%91learning-1/index.html">
-<meta property="og:site_name" content="天才lzh自留地">
+<meta property="og:site_name" content="lzhello的碎碎念">
 <meta property="og:description" content="一. 进程和线程的关系  1637 - 17071234567891011【两者的定义】    进程是程序运行的基本单位。一个进程可以有多个线程。    线程是 进程划分成更小的运行单位。多个线程【共享】进程的【堆和方法】区资源，    但每个线程【独占】一个【程序计数器、虚拟机栈、本地方法栈】。      【区别】：     1. 【是否独立】： 各个进程基本独立，而同一进程下的各个线程可能相互">
 <meta property="og:locale">
 <meta property="og:image" content="https://note.youdao.com/yws/res/43414/400F2FB130F9470BAD70079722D25F33">
@@ -103,7 +103,7 @@
     root: '',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -129,7 +129,7 @@
 
 
 
-  <title>并发learning | 天才lzh自留地</title>
+  <title>并发learning | lzhello的碎碎念</title>
   
 
 
@@ -148,7 +148,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -159,7 +159,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">天才lzh自留地</span>
+        <span class="site-title">lzhello的碎碎念</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -213,6 +213,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -251,11 +261,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天才lzh自留地">
+      <meta itemprop="name" content="lzhello的碎碎念">
     </span>
 
     
@@ -289,6 +299,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/02/18/%E5%B9%B6%E5%8F%91learning-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/02/18/%E5%B9%B6%E5%8F%91learning-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -296,6 +316,25 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.3k
+                </span>
+              
+
+              
+
+              
+            </div>
           
 
           
@@ -433,6 +472,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -468,6 +510,10 @@
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
             
               <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -576,6 +622,15 @@
   <span class="author" itemprop="copyrightHolder">lzhello</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">14k</span>
+  
 </div>
 
 
@@ -608,6 +663,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -633,6 +690,8 @@
 
   
 
+
+  
 
 
 
@@ -672,6 +731,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -737,6 +801,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'GtCtI94yO18eQvvJRre7GbmU-gzGzoHsz',
+        appKey: '7Bc7UDA3574iWiw9pGgRc8VS',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
