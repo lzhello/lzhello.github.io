@@ -482,7 +482,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.3k
+                  3.6k
                 </span>
               
 
@@ -508,7 +508,20 @@
 
       
         
-          <h4 id="一-进程和线程的关系-1637-1707"><a href="#一-进程和线程的关系-1637-1707" class="headerlink" title="一. 进程和线程的关系  1637 - 1707"></a>一. 进程和线程的关系  1637 - 1707</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">【两者的定义】</span><br><span class="line">    进程是程序运行的基本单位。一个进程可以有多个线程。</span><br><span class="line">    线程是 进程划分成更小的运行单位。多个线程【共享】进程的【堆和方法】区资源，</span><br><span class="line">    但每个线程【独占】一个【程序计数器、虚拟机栈、本地方法栈】。</span><br><span class="line">      </span><br><span class="line">【区别】： </span><br><span class="line">    1. 【是否独立】： 各个进程基本独立，而同一进程下的各个线程可能相互影响。 </span><br><span class="line">    2. 【开销大小】： 线程执行和切换开销小，不利于资源的管理。而进程相反。</span><br><span class="line">【线程】</span><br><span class="line">    程序计数器私有的原因 ：   线程切换时，恢复到原先的字节码指令</span><br><span class="line">    虚拟机栈&amp;本地方法栈 私有原因 ：  防止其他线程使用局部变量</span><br></pre></td></tr></table></figure>
+          <h4 id="一-进程process和线程thread的关系"><a href="#一-进程process和线程thread的关系" class="headerlink" title="一. 进程process和线程thread的关系"></a>一. 进程process和线程thread的关系</h4><h5 id="两者的定义"><a href="#两者的定义" class="headerlink" title="两者的定义"></a><strong>两者的定义</strong></h5><p>进程(process)是程序运行的基本单位。一个进程可以有多个线程。进程是及程序的一次执行过程，是正在运行的程序的抽象，代表了运行的CPU。系统资源（内存，文件等）都已进程为单位分配。操作系统为每个进程都分配了独立的地址空间，同时通过“调度”把控制权交给了进程。</p>
+<p>但是进程存在问题：</p>
+<ol>
+<li>进程切换的代价和开销大</li>
+<li>在一个进程内需要并行执行多个程序与实现不同功能</li>
+<li>有时性能低</li>
+</ol>
+<p>线程(thread)是进程划分成更小的运行单位。线程是程序执行中一个单一的顺序控制流程，是程序执行流的最小单元，是处理器调度和分派的基本单位。多个线程【共享】进程的【堆和方法】区资源，但每个线程【独占】一个【程序计数器、虚拟机栈、本地方法栈】。</p>
+<h5 id="区别："><a href="#区别：" class="headerlink" title="区别："></a><strong>区别：</strong></h5><ol>
+<li>线程是程序执行的最小单位，而进程是操作系统分配资源的最小单位；</li>
+<li>一个进程由一个或多个线程组成，线程是一个进程中代码的不同执行路线</li>
+<li>进程之间相互独立，但同一进程下的各个线程之间共享程序的内存空间(包括代码段，数据集，堆等)及一些进程级的资源(如打开文件和信号等)，某进程内的线程在其他进程不可见；</li>
+<li>调度和切换：线程上下文切换比进程上下文切换要快得多</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/02/18/%E5%B9%B6%E5%8F%91learning-1/#more" rel="contents">
@@ -1251,7 +1264,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1301,8 +1314,13 @@
 
       
 
-    </div>
-  </aside>
+
+<div id="music163player">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=441491887&auto=0&height=66"></iframe>
+</div>
+
+</div>
+</aside>
 
 
         
@@ -1325,7 +1343,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14k</span>
+    <span title="Site words total count">14.2k</span>
   
 </div>
 
