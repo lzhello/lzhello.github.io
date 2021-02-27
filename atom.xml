@@ -6,7 +6,7 @@
   <link href="https://github.com/lzhello/lzhello.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/lzhello/lzhello.github.io.git/"/>
-  <updated>2021-02-24T03:21:30.736Z</updated>
+  <updated>2021-02-27T10:34:07.889Z</updated>
   <id>https://github.com/lzhello/lzhello.github.io.git/</id>
   
   <author>
@@ -17,23 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>nmsl</title>
-    <link href="https://github.com/lzhello/lzhello.github.io.git/2021/02/24/nmsl/"/>
-    <id>https://github.com/lzhello/lzhello.github.io.git/2021/02/24/nmsl/</id>
-    <published>2021-02-24T03:20:51.000Z</published>
-    <updated>2021-02-24T03:21:30.736Z</updated>
+    <title>前端面试学习</title>
+    <link href="https://github.com/lzhello/lzhello.github.io.git/2021/02/25/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://github.com/lzhello/lzhello.github.io.git/2021/02/25/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%AD%A6%E4%B9%A0/</id>
+    <published>2021-02-25T13:20:19.000Z</published>
+    <updated>2021-02-27T10:34:07.889Z</updated>
     
-    <content type="html"><![CDATA[<p>cyhnmsl</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;cyhnmsl&lt;/p&gt;
-</summary>
-      
+    <content type="html"><![CDATA[<h3 id="前端面试中的重要考点"><a href="#前端面试中的重要考点" class="headerlink" title="前端面试中的重要考点"></a>前端面试中的重要考点</h3><ul><li>HTML与CSS</li><li>原型，作用域，异步</li><li>DOM事件与Ajax</li><li>性能优化</li><li>手写代码</li><li>HTTP协议</li></ul><a id="more"></a><p>CSS：布局，定位，移动端响应式</p><p>ES语法：原型&amp;原型链，作用域&amp;闭包，异步&amp;单线程</p><p>Web API： DOM&amp;BOM， Ajax跨域，事件存储</p><p>开发环境：版本管理，调试抓包，打包建构</p><p>运行环境：页面渲染，性能优化，Web安全</p><p>网络通讯： headers，Restful API， 缓存策略</p><h3 id="面试题体验"><a href="#面试题体验" class="headerlink" title="面试题体验"></a>面试题体验</h3><ul><li>typeof能判断的类型？【考点：JS变量类型】</li><li>何时使用===何时使用==？【考点：强制类型转换】</li><li>window.onload和DOMContentLoaded区别？【页面加载过程】</li><li>JS创建10个&lt;a&gt;标签，点击弹出对应序号 【JS作用域】</li><li>手写节流throttle和防抖debounce【性能体验优化】</li><li>Promise解决什么问题？【JS异步】</li></ul><h3 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h3><p>JD分析+简历准备</p><p><a href="http://www.imooc.com/article/300475">面试中应避免的几种情况</a></p><h3 id="HTML-CSS面试题"><a href="#HTML-CSS面试题" class="headerlink" title="HTML+CSS面试题"></a>HTML+CSS面试题</h3><h4 id="HTML面试题"><a href="#HTML面试题" class="headerlink" title="HTML面试题"></a>HTML面试题</h4><ul><li>如何理解HTML语义化</li><li>默认情况下，哪些HTML标签是块级元素，哪些是内联元素</li></ul><h4 id="CSS面试题"><a href="#CSS面试题" class="headerlink" title="CSS面试题"></a>CSS面试题</h4><p>CSS：布局，定位，图文样式，响应式，CSS3</p><p>【布局】</p><ul><li>盒子模型的宽度如何计算？</li><li>margin纵向重叠问题</li><li>margin负值的问题</li><li>BFC的理解与应用</li><li>float布局的问题，clearfix</li><li></li></ul>]]></content>
     
     
+    <summary type="html">&lt;h3 id=&quot;前端面试中的重要考点&quot;&gt;&lt;a href=&quot;#前端面试中的重要考点&quot; class=&quot;headerlink&quot; title=&quot;前端面试中的重要考点&quot;&gt;&lt;/a&gt;前端面试中的重要考点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;HTML与CSS&lt;/li&gt;
+&lt;li&gt;原型，作用域，异步&lt;/li&gt;
+&lt;li&gt;DOM事件与Ajax&lt;/li&gt;
+&lt;li&gt;性能优化&lt;/li&gt;
+&lt;li&gt;手写代码&lt;/li&gt;
+&lt;li&gt;HTTP协议&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
+    
+    
+    
+    <category term="基础编程知识学习" scheme="https://github.com/lzhello/lzhello.github.io.git/tags/%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
