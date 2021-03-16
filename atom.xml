@@ -6,7 +6,7 @@
   <link href="https://github.com/lzhello/lzhello.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/lzhello/lzhello.github.io.git/"/>
-  <updated>2021-03-16T16:11:12.589Z</updated>
+  <updated>2021-03-16T16:28:10.581Z</updated>
   <id>https://github.com/lzhello/lzhello.github.io.git/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>大二2020小学期--由古老的servlet+jsp+HTML技术构成的购物网站</title>
-    <link href="https://github.com/lzhello/lzhello.github.io.git/2021/03/17/%E5%A4%A7%E4%BA%8C2020%E5%B0%8F%E5%AD%A6%E6%9C%9F-%E7%94%B1%E5%8F%A4%E8%80%81%E7%9A%84servlet-jsp-HTML%E6%8A%80%E6%9C%AF%E6%9E%84%E6%88%90%E7%9A%84%E8%B4%AD%E7%89%A9%E7%BD%91%E7%AB%99/"/>
-    <id>https://github.com/lzhello/lzhello.github.io.git/2021/03/17/%E5%A4%A7%E4%BA%8C2020%E5%B0%8F%E5%AD%A6%E6%9C%9F-%E7%94%B1%E5%8F%A4%E8%80%81%E7%9A%84servlet-jsp-HTML%E6%8A%80%E6%9C%AF%E6%9E%84%E6%88%90%E7%9A%84%E8%B4%AD%E7%89%A9%E7%BD%91%E7%AB%99/</id>
+    <title>2020暑假的虎牙小程序开发大赛--Emojito.live的诞生</title>
+    <link href="https://github.com/lzhello/lzhello.github.io.git/2021/03/17/2020%E6%9A%91%E5%81%87%E7%9A%84%E8%99%8E%E7%89%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%A4%A7%E8%B5%9B-Emojito-live%E7%9A%84%E8%AF%9E%E7%94%9F/"/>
+    <id>https://github.com/lzhello/lzhello.github.io.git/2021/03/17/2020%E6%9A%91%E5%81%87%E7%9A%84%E8%99%8E%E7%89%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%A4%A7%E8%B5%9B-Emojito-live%E7%9A%84%E8%AF%9E%E7%94%9F/</id>
+    <published>2021-03-16T16:19:11.000Z</published>
+    <updated>2021-03-16T16:28:10.581Z</updated>
+    
+    <content type="html"><![CDATA[<p>开坑+1，不开坑的话我觉得我肯定就懒得写了。</p><p>很有趣的一个项目，因为抱上了编程大佬诺神的大腿，还稀里糊涂地让特别贴心和温暖的央语学妹当了队长，包揽了所有除编程外的各类比赛事项，所以整个项目过程中我基本就是从开头划水划到最后，真是愧为学姐。不过这个项目是我第一个得以上线试验过的项目（虽然没有得到投入使用的机会），在这点上，比起以前的纸上谈兵项目（比如大作业那个只能在自己本地电脑上运行起来的电商购物网站），这个项目值得一提的程度就变得非常高。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;开坑+1，不开坑的话我觉得我肯定就懒得写了。&lt;/p&gt;
+&lt;p&gt;很有趣的一个项目，因为抱上了编程大佬诺神的大腿，还稀里糊涂地让特别贴心和温暖的央语学妹当了队长，包揽了所有除编程外的各类比赛事项，所以整个项目过程中我基本就是从开头划水划到最后，真是愧为学姐。不过这个项目是我第一个</summary>
+      
+    
+    
+    
+    
+    <category term="我的项目" scheme="https://github.com/lzhello/lzhello.github.io.git/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020小学期--由古老的servlet+jsp+HTML技术构成的购物网站</title>
+    <link href="https://github.com/lzhello/lzhello.github.io.git/2021/03/17/2020%E5%B0%8F%E5%AD%A6%E6%9C%9F-%E7%94%B1%E5%8F%A4%E8%80%81%E7%9A%84servlet-jsp-HTML%E6%8A%80%E6%9C%AF%E6%9E%84%E6%88%90%E7%9A%84%E8%B4%AD%E7%89%A9%E7%BD%91%E7%AB%99/"/>
+    <id>https://github.com/lzhello/lzhello.github.io.git/2021/03/17/2020%E5%B0%8F%E5%AD%A6%E6%9C%9F-%E7%94%B1%E5%8F%A4%E8%80%81%E7%9A%84servlet-jsp-HTML%E6%8A%80%E6%9C%AF%E6%9E%84%E6%88%90%E7%9A%84%E8%B4%AD%E7%89%A9%E7%BD%91%E7%AB%99/</id>
     <published>2021-03-16T16:06:16.000Z</published>
-    <updated>2021-03-16T16:11:12.589Z</updated>
+    <updated>2021-03-16T16:20:07.858Z</updated>
     
     <content type="html"><![CDATA[<p>开个坑，等托福考完再回来写，有个隔壁北科的高中同学作业也要写购物网站，为了帮他写作业（我真是带好人）所以这几天把工程文件都翻了出来，刚好这学期把博客开起来了，来记录记录我的第一个充斥着血汗泪水和菜鸡技术的编程项目。</p>]]></content>
     
