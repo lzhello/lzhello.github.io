@@ -109,7 +109,7 @@
     <link href="https://github.com/lzhello/lzhello.github.io.git/2021/03/10/Web%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"/>
     <id>https://github.com/lzhello/lzhello.github.io.git/2021/03/10/Web%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</id>
     <published>2021-03-10T09:04:35.000Z</published>
-    <updated>2021-03-26T02:41:37.388Z</updated>
+    <updated>2021-03-26T02:44:25.749Z</updated>
     
     <content type="html"><![CDATA[<p>一个网页：结构+表现+行为</p><p>HTML=结构</p><p>CSS=表现</p><p>JavaScript=行为</p><a id="more"></a><h2 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h2><p>&lt;h1&gt;到&lt;h6&gt;： 标题，重要程度由高到低</p><p>&lt;p&gt;：段落</p><p>&lt;em&gt;：语调加重</p><p>&lt;strong&gt;：强调</p><p>&lt;blockquote&gt;：长引用</p><p>&lt;q&gt;：短引用</p><br><p><strong>块元素    block element</strong></p><p>在网页中一般通过块元素来对页面进行布局 </p><p><strong>行内元素    inline element</strong></p><p>主要用来包裹文字</p><br><ul><li>一般会在块元素中放行内元素，不会在行内元素中放块元素</li><li>块元素中基本什么都能放</li><li>p元素中不能放任何块元素</li></ul><br><p>浏览器在解析网页时，会自动对网页中不合规范的内容进行修正：标签写在根元素外部；p元素中嵌套了块元素；根元素中出现了除head和body以外的子元素</p><br><p><strong>布局标签</strong></p><p>head 网页头部；main 网页主题（一个页面中只有一个main）；footer 网页底部；nav 网页导航；aside 和主体相关的其他内容（侧边栏）；article 独立文章；section 独立区块，以上标签都不能用时使用section</p><p>div 没有语义，用来表示区块，主要布局元素</p><p>span 没有语义，行内元素，一般用于在网页中选中文字</p><p>并不带样式，只是代表区块，样式由CSS提供</p><p><strong>超链接</strong></p><p>&lt;a href=” “ target=” “&gt;    &lt;/a&gt;</p><ul><li>target的值：<ul><li>_self默认值，在当前界面打开超链接；</li><li>_blank在一个新的页面中打开超链接</li></ul></li></ul><p> &lt;a href=”#bottom”&gt;跳到底部&lt;/a&gt;</p><p>&lt;a id=”bottom” href=”#”&gt;底部；回到顶部&lt;/a&gt;</p><p>&lt;a href=”javascript:;”&gt;什么也不会发生&lt;/a&gt;</p><p><strong>图片标签</strong></p><p>向当前页面中引入一个外部图片，</p><p>&lt;img src=”” alt=””&gt;    自结束标签，替换元素</p><p>src: 路径，路径规则和超链接相同（./和../）</p><p>alt: 图片的描述，默认情况下不显示，有些浏览器会在图片无法加载时显示，搜索引擎会根据alt中的内容来识别图片</p><p>width: 图片的宽度（单位为像素）</p><p>height: 图片的高度（如果宽度和高度只修改了一个，则另一个会等比例缩放）</p><p><strong>内联框架</strong></p><p>向当前界面引入一个其他页面</p><p>&lt;iframe src=”要引入的网页的路径” width=”” height=”” frameborder=””&gt;</p><p>&lt;/iframe&gt;</p><p><strong>音视频</strong></p><p>&lt;audio src=”” controls autoplay loop &gt;</p><p>&lt;video src=”” controls autoplay loop &gt;</p><p>不支持audio和video标签的：ie8及往前的浏览器，可以用&lt;embed&gt;，但会自动播放且需要设置width和height</p><h2 id="层叠样式表-CSS"><a href="#层叠样式表-CSS" class="headerlink" title="层叠样式表-CSS"></a>层叠样式表-CSS</h2><p>CSS用来设置网页中元素的样式</p><ol><li><p>内联样式，行内样式： 在标签内部通过style属性来设置元素的样式</p><p>&lt;p style=”color:red; font-size:60px; “&gt; XXXX &lt;/p&gt;</p><p>样式只能对一个标签生效，如果希望影响多个元素就需要每个都复制一遍，且样式发生变化时需要逐个修改，开发时不使用</p></li><li><p>将样式编写在head的style中</p></li></ol>]]></content>
     
@@ -122,7 +122,9 @@
     
     
     
-    <category term="基础编程知识学习, 大学课程学习笔记" scheme="https://github.com/lzhello/lzhello.github.io.git/tags/%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="基础编程知识学习" scheme="https://github.com/lzhello/lzhello.github.io.git/tags/%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="大学课程学习笔记" scheme="https://github.com/lzhello/lzhello.github.io.git/tags/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
